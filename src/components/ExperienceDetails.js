@@ -11,46 +11,75 @@ class ExperienceDetails extends Component {
         this.props.prevPage()
     }
 
+    addExperience = (e) => { 
+        e.preventDefault() 
+        this.props.addExperience()
+    }
 
     render() {
         const { values, handleChange } = this.props
 
         return (
+            <div>
+            <h1>Experience Details</h1>
             <form>
-                <label>
-                    Nameeeee:
-                    <input 
-                        type="text" 
-                        onChange = {handleChange("name")}
-                        defaultValue={values.name}
-                    />
-                </label>
+                {
+                    values.experience.map((val, idx) => {
+                        return (
+                            <div key={idx}>
+                                <label>{`Company #${idx+1}`}</label>
+                                <input
+                                    type="text"
+                                    data-id={idx}
+                                    className="company"
+                                    value={values.experience[idx].company}
+                                    onChange={handleChange}
+                                />    
 
-                <br />
-                
-                <label>
-                    Emailllll:
-                    <input 
-                        type="email" 
-                        onChange = {handleChange("email")}
-                        defaultValue={values.email}
-                    />
-                </label>
+                                <label>{`Role #${idx+1}`}</label>
+                                <input
+                                    type="text"
+                                    data-id={idx}
+                                    className="role"
+                                    value={values.experience[idx].role}
+                                    onChange={handleChange}
+                                />    
 
-                <br />
+                                <label>{`Start Date #${idx+1}`}</label>
+                                <input
+                                    type="date"
+                                    data-id={idx}
+                                    className="startDateExp"
+                                    value={values.experience[idx].startDateExp}
+                                    onChange={handleChange}
+                                />   
 
-                <label>
-                    Phoneeeee:
-                    <input 
-                        type="text" 
-                        onChange = {handleChange("phone")}
-                        defaultValue={values.phone}
-                    />
-                </label>
+                                <label>{`End Date #${idx+1}`}</label>
+                                <input
+                                    type="date"
+                                    data-id={idx}
+                                    className="endDateExp"
+                                    value={values.experience[idx].endDateExp}
+                                    onChange={handleChange}
+                                />   
 
+                                <label>{`Details #${idx+1}`}</label>
+                                <textarea
+                                    type="text"
+                                    data-id={idx}
+                                    className="details"
+                                    value={values.experience[idx].details}
+                                    onChange={handleChange}
+                                />   
+                            </div>
+                        )
+                    })
+                }
+                <button onClick={this.addExperience}>Add new experience</button>
                 <button onClick={this.goback}>Prev Page</button>
                 <button onClick={this.continue}>Next Page</button>
             </form>
+        </div>
         )
     }
 } 

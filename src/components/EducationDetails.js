@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class ExperienceDetials extends Component {
+class ExperienceDetails extends Component {
     continue = (e) => {
         e.preventDefault()
         this.props.nextPage()
@@ -13,53 +13,67 @@ class ExperienceDetials extends Component {
 
     addEducation = (e) => { 
         e.preventDefault() 
-        this.props.addEdu()
+        this.props.addEducation()
     }
 
     render() {
         const { values, handleChange} = this.props
-
+        // console.log(values)
         
-
         return (
-            <form>
-                <button onClick={this.addEducation}>Add new education</button>
-                {
-                    values.education.map((val, idx) => {
-                        let schoolId = `school-${idx}`
-                        let courseId = `course-${idx}`
-                        // let startId = `start-${idx}`
-                        // let endId = `end-${idx}`
+            <div>
+                <h1>Education Details</h1>
+                <form>
+                    {
+                        values.education.map((val, idx) => {
+                            return (
+                                <div key={idx}>
+                                    <label>{`School #${idx+1}`}</label>
+                                    <input
+                                        type="text"
+                                        data-id={idx}
+                                        className="school"
+                                        value={values.education[idx].school}
+                                        onChange={handleChange}
+                                    />    
 
-                        return (
-                            <div key={idx}>
-                                <label htmlFor={schoolId}>{`School #${idx+1}`}</label>
-                                <input
-                                    type="text"
-                                    name={schoolId}
-                                    data-id={idx}
-                                    id={schoolId}
-                                    className="school"
-                                />    
+                                    <label>{`Course #${idx+1}`}</label>
+                                    <input
+                                        type="text"
+                                        data-id={idx}
+                                        className="course"
+                                        value={values.education[idx].course}
+                                        onChange={handleChange}
+                                    />    
 
-                                <label htmlFor={courseId}>{`Course #${idx+1}`}</label>
-                                <input
-                                    type="text"
-                                    name={courseId}
-                                    data-id={idx}
-                                    id={courseId}
-                                    className="course"
-                                />    
-                            </div>
-                        )
-                    })
-                }
-                <input type="submit" value="Submit"></input>
-                <button onClick={this.goback}>Prev Page</button>
-                <button onClick={this.continue}>Next Page</button>
-            </form>
+                                    <label>{`Start Date #${idx+1}`}</label>
+                                    <input
+                                        type="date"
+                                        data-id={idx}
+                                        className="startDateEdu"
+                                        value={values.education[idx].startDateEdu}
+                                        onChange={handleChange}
+                                    />   
+
+                                    <label>{`End Date #${idx+1}`}</label>
+                                    <input
+                                        type="date"
+                                        data-id={idx}
+                                        className="endDateEdu"
+                                        value={values.education[idx].endDateEdu}
+                                        onChange={handleChange}
+                                    />   
+                                </div>
+                            )
+                        })
+                    }
+                    <button onClick={this.addEducation}>Add new education</button>
+                    <button onClick={this.goback}>Prev Page</button>
+                    <button onClick={this.continue}>Next Page</button>
+                </form>
+            </div>
         )
     }
 } 
 
-export default ExperienceDetials
+export default ExperienceDetails

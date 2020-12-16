@@ -11,35 +11,45 @@ class PersonalDetails extends Component {
         const { values, handleChange } = this.props
 
         return (
-            <form>
-                <label>Name:</label>
-                <input 
-                    type="text" 
-                    onChange = {handleChange("name")}
-                    defaultValue={values.name}
-                />
+            <div>
+                <h1>Personal Details</h1>
+                <form>
+                    <label>Name:</label>
+                    <input 
+                        type="text" 
+                        onChange = {handleChange}
+                        value={values.name}
+                        className="name"
+                    />
 
-                <br />
+                    <br />
+                    <br />
+                    
+                    <label>Email:</label>    
+                    <input 
+                        type="email" 
+                        onChange = {handleChange}
+                        value={values.email}
+                        className="email"
+                    />
+
+                    <br />
+                    <br />
+
+                    <label>Phone:</label>  
+                    <input 
+                        type="text" 
+                        onChange = {handleChange}
+                        value={values.phone}
+                        className="phone"
+                    />
                 
-                <label>Email:</label>    
-                <input 
-                    type="email" 
-                    onChange = {handleChange("email")}
-                    defaultValue={values.email}
-                />
+                    <br />
+                    <br />
 
-                <br />
-
-                <label>Phone:</label>  
-                <input 
-                    type="text" 
-                    onChange = {handleChange("phone")}
-                    defaultValue={values.phone}
-                />
-            
-
-                <button onClick={this.continue}>Next Page</button>
-            </form>
+                    <button onClick={this.continue}>Next Page</button>
+                </form>
+            </div>
         )
     }
 } 

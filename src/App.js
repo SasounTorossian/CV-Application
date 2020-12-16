@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PersonalDetails from "./components/PersonalDetails"
 import EducationDetails from "./components/EducationDetails"
-// import ExperienceDetails from "./components/ExperienceDetails"
+import ExperienceDetails from "./components/ExperienceDetails"
 
 class App extends Component {
   constructor(props) {
@@ -15,14 +15,14 @@ class App extends Component {
       education: [{
         school: "",
         course: "",
-        startDate: "",
-        endDate: ""
+        startDateEdu: "",
+        endDateEdu: ""
       }],
       experience: [{
         company: "",
         role: "",
-        startDate: "",
-        endDate: "",
+        startDateExp: "",
+        endDateExp: "",
         details: ""
       }],
     }
@@ -40,26 +40,31 @@ class App extends Component {
     })
   }
 
-  handleChange = (input) => e => {
-    // Handle different kind of input from Personal vs. Edu/Exp
-    this.setState({
-      [input]: e.target.value
-    })      
+  handleChange = (e) => {
+    if(["name", "email", "phone"].includes(e.target.className)) {
+      this.setState({ [e.target.className]: e.target.value }) 
+    }
+    else if(["school", "course", "startDateEdu", "endDateEdu"].includes(e.target.className)) {
+      let education = [...this.state.education]
+      education[e.target.dataset.id][e.target.className] = e.target.value
+      this.setState({ education })
+    }
+    else if(["company", "role", "startDateExp", "endDateExp", "details"].includes(e.target.className)) {
+      let experience = [...this.state.experience]
+      experience[e.target.dataset.id][e.target.className] = e.target.value
+      this.setState({ experience })
+    }
+     
   }
 
-  addEdu = (e) => {
-    const newEdu = {
-      school: "",
-      course: "",
-      startDate: "",
-      endDate: ""
-    }
+  addEducation = () => {
+    const newEdu = { school: "", course: "", startDateEdu: "", endDateEdu: ""}
+    this.setState({ education: [...this.state.education, newEdu] })       
+  }
 
-    this.setState({ 
-      education: [...this.state.education, newEdu],
-    })       
-
-    console.log(this.state.education)
+  addExperience = () => {
+    const newExp = {company: "", role: "", startDateExp: "", endDateExp: "", details: ""}
+    this.setState({ experience: [...this.state.experience, newExp] })       
   }
 
   render() {
@@ -70,37 +75,42 @@ class App extends Component {
     switch(page) {
       case 1:
         return (
-          <div>
-            <h1>Personal Details</h1>
             <PersonalDetails
               values={values}
               nextPage = {this.nextPage}
               handleChange={this.handleChange}
             />
-          </div>
         )
 
       case 2:
         return (
-          <div>
-            <h1>Education Details</h1>
             <EducationDetails
               values={values}
               prevPage = {this.prevPage}
               nextPage = {this.nextPage}
-              addEdu={this.addEdu}
+              handleChange = {this.handleChange}
+              addEducation={this.addEducation}
             />
-          </div>
         )
 
       case 3:
-        return <h1>Experience Details</h1>
+        return (
+          <ExperienceDetails
+            values={values}
+            prevPage = {this.prevPage}
+            nextPage = {this.nextPage}
+            handleChange = {this.handleChange}
+            addExperience={this.addExperience}
+        />
+        )
 
       case 4:
         return <h1>Confirm</h1>
 
       case 5:
         return <h1>Success</h1>
+
+      // TODO: Add default case
     }
   }
 }
