@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PersonalDetails from "./components/PersonalDetails"
-import ExperienceDetails from "./components/ExperienceDetails"
+import EducationDetails from "./components/EducationDetails"
+// import ExperienceDetails from "./components/ExperienceDetails"
 
 class App extends Component {
   constructor(props) {
@@ -11,8 +12,19 @@ class App extends Component {
       name: "",
       email: "",
       phone: "",
-      education: [],
-      experience: [],
+      education: [{
+        school: "",
+        course: "",
+        startDate: "",
+        endDate: ""
+      }],
+      experience: [{
+        company: "",
+        role: "",
+        startDate: "",
+        endDate: "",
+        details: ""
+      }],
     }
   }
 
@@ -29,9 +41,25 @@ class App extends Component {
   }
 
   handleChange = (input) => e => {
+    // Handle different kind of input from Personal vs. Edu/Exp
     this.setState({
       [input]: e.target.value
-    })
+    })      
+  }
+
+  addEdu = (e) => {
+    const newEdu = {
+      school: "",
+      course: "",
+      startDate: "",
+      endDate: ""
+    }
+
+    this.setState({ 
+      education: [...this.state.education, newEdu],
+    })       
+
+    console.log(this.state.education)
   }
 
   render() {
@@ -56,11 +84,11 @@ class App extends Component {
         return (
           <div>
             <h1>Education Details</h1>
-            <ExperienceDetails
+            <EducationDetails
               values={values}
               prevPage = {this.prevPage}
               nextPage = {this.nextPage}
-              handleChange={this.handleChange}
+              addEdu={this.addEdu}
             />
           </div>
         )

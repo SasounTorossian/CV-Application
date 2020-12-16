@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class ExperienceDetials extends Component {
+class ExperienceDetails extends Component {
     continue = (e) => {
         e.preventDefault()
         this.props.nextPage()
@@ -55,4 +55,4 @@ class ExperienceDetials extends Component {
     }
 } 
 
-export default ExperienceDetials
+export default ExperienceDetails

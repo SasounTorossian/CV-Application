@@ -12,36 +12,31 @@ class PersonalDetails extends Component {
 
         return (
             <form>
-                <label>
-                    Name:
-                    <input 
-                        type="text" 
-                        onChange = {handleChange("name")}
-                        defaultValue={values.name}
-                    />
-                </label>
+                <label>Name:</label>
+                <input 
+                    type="text" 
+                    onChange = {handleChange("name")}
+                    defaultValue={values.name}
+                />
 
                 <br />
                 
-                <label>
-                    Email:
-                    <input 
-                        type="email" 
-                        onChange = {handleChange("email")}
-                        defaultValue={values.email}
-                    />
-                </label>
+                <label>Email:</label>    
+                <input 
+                    type="email" 
+                    onChange = {handleChange("email")}
+                    defaultValue={values.email}
+                />
 
                 <br />
 
-                <label>
-                    Phone:
-                    <input 
-                        type="text" 
-                        onChange = {handleChange("phone")}
-                        defaultValue={values.phone}
-                    />
-                </label>
+                <label>Phone:</label>  
+                <input 
+                    type="text" 
+                    onChange = {handleChange("phone")}
+                    defaultValue={values.phone}
+                />
+            
 
                 <button onClick={this.continue}>Next Page</button>
             </form>
