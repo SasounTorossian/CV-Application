@@ -106,47 +106,6 @@ class App extends Component {
           </Switch>
       </Router>
     )
-
-    // switch(page) {
-    //   case 1:
-    //     return (
-    //         <PersonalDetails
-    //           values={values}
-    //           nextPage = {this.onNextPage}
-    //           handleChange={this.handleChange}
-    //         />
-    //     )
-
-    //   case 2:
-    //     return (
-    //         <EducationDetails
-    //           values={values}
-    //           prevPage = {this.prevPage}
-    //           nextPage = {this.onNextPage}
-    //           handleChange = {this.handleChange}
-    //           addEducation={this.addEducation}
-    //         />
-    //     )
-
-    //   case 3:
-    //     return (
-    //       <ExperienceDetails
-    //         values={values}
-    //         prevPage = {this.prevPage}
-    //         nextPage = {this.onNextPage}
-    //         handleChange = {this.handleChange}
-    //         addExperience={this.addExperience}
-    //     />
-    //     )
-
-    //   case 4:
-    //     return <h1>Confirm</h1>
-
-    //   case 5:
-    //     return <h1>Success</h1>
-
-    //   // TODO: Add default case
-    // }
   }
 }
 
