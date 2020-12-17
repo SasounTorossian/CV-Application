@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 const PersonalDetails = ({values, handleChange}) => {
     return (
         <div>
+            <h1>Personal Details</h1>
             <form noValidate autoComplete="off">
                 <label>Name:</label>
                 <input 

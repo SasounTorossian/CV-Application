@@ -1,17 +1,14 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-class ExperienceDetails extends Component {
-    addExperience = (e) => { 
+const ExperienceDetails = ({values, handleChange, addExp}) => {
+    const addExperience = (e) => { 
         e.preventDefault() 
-        this.props.addExperience()
+        addExp()
     }
 
-    render() {
-        const { values, handleChange } = this.props
-
-        return (
-            <div>
+    return (
+        <div>
             <h1>Experience Details</h1>
             <form>
                 {
@@ -66,13 +63,12 @@ class ExperienceDetails extends Component {
                         )
                     })
                 }
-                <button onClick={this.addExperience}>Add new experience</button>
+                <button onClick={addExperience}>Add new experience</button>
                 <Link to="/education"><button>Prev Page</button></Link>
                 <Link to="/confirm"><button>Next Page</button></Link>
             </form>
         </div>
-        )
-    }
+    )
 } 
 
 export default ExperienceDetails

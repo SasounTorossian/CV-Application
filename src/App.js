@@ -56,6 +56,7 @@ class App extends Component {
     this.setState({ experience: [...this.state.experience, newExp] })       
   }
 
+  //TODO: Grid sizing.
   render() {
     const {name, email, phone, education, experience} = this.state
     const values = {name, email, phone, education, experience}
@@ -86,7 +87,7 @@ class App extends Component {
                   {...props} 
                   values={values}
                   handleChange = {this.handleChange}
-                  addEducation={this.addEducation}
+                  addEdu={this.addEducation}
                 />
               )} 
             />
@@ -98,7 +99,7 @@ class App extends Component {
                   {...props} 
                   values={values}
                   handleChange = {this.handleChange}
-                  addExperience={this.addExperience}
+                  addExp={this.addExperience}
                 />
               )} 
             />

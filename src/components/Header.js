@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography, AppBar, Toolbar, IconButton, Menu, MenuItem } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import { withRouter } from 'react-router-dom'
+import WorkIcon from '@material-ui/icons/Work';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,13 +31,16 @@ const Header = ({history}) => {
       setAnchorEl(null);
     };
 
+    //TODO: Figure out work icon
+    //TODO: Figure out github link
     return (
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                        Personal Details
+                        CV Assistant
                     </Typography>
+
                     <IconButton 
                         edge="start" 
                         className={classes.menuButton}
