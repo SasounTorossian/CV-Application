@@ -2,13 +2,14 @@ import React, {Component} from 'react'
 import PersonalDetails from "./components/PersonalDetails"
 import EducationDetails from "./components/EducationDetails"
 import ExperienceDetails from "./components/ExperienceDetails"
+import Header from "./components/Header"
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      page: 1,
       name: "",
       email: "",
       phone: "",
@@ -26,18 +27,6 @@ class App extends Component {
         details: ""
       }],
     }
-  }
-
-  nextPage = () => {
-    this.setState({
-      page: this.state.page + 1
-    })
-  }
-
-  prevPage = () => {
-    this.setState({
-      page: this.state.page - 1
-    })
   }
 
   handleChange = (e) => {
@@ -68,50 +57,95 @@ class App extends Component {
   }
 
   render() {
-    const { page } = this.state
     const {name, email, phone, education, experience} = this.state
     const values = {name, email, phone, education, experience}
 
-    switch(page) {
-      case 1:
-        return (
-            <PersonalDetails
-              values={values}
-              nextPage = {this.nextPage}
-              handleChange={this.handleChange}
+    return (
+      <Router>
+          <Route
+            path = "/" 
+            component={Header}
+          />
+
+          <Switch>
+            <Route
+              path = "/personal" 
+              render={(props) => (
+                <PersonalDetails 
+                  {...props} 
+                  values={values}
+                  handleChange={this.handleChange} 
+                />
+              )} 
             />
-        )
 
-      case 2:
-        return (
-            <EducationDetails
-              values={values}
-              prevPage = {this.prevPage}
-              nextPage = {this.nextPage}
-              handleChange = {this.handleChange}
-              addEducation={this.addEducation}
+            <Route
+              path = "/education" 
+              render={(props) => (
+                <EducationDetails 
+                  {...props} 
+                  values={values}
+                  handleChange = {this.handleChange}
+                  addEducation={this.addEducation}
+                />
+              )} 
             />
-        )
 
-      case 3:
-        return (
-          <ExperienceDetails
-            values={values}
-            prevPage = {this.prevPage}
-            nextPage = {this.nextPage}
-            handleChange = {this.handleChange}
-            addExperience={this.addExperience}
-        />
-        )
+            <Route
+              path = "/experience" 
+              render={(props) => (
+                <ExperienceDetails 
+                  {...props} 
+                  values={values}
+                  handleChange = {this.handleChange}
+                  addExperience={this.addExperience}
+                />
+              )} 
+            />
+          </Switch>
+      </Router>
+    )
 
-      case 4:
-        return <h1>Confirm</h1>
+    // switch(page) {
+    //   case 1:
+    //     return (
+    //         <PersonalDetails
+    //           values={values}
+    //           nextPage = {this.onNextPage}
+    //           handleChange={this.handleChange}
+    //         />
+    //     )
 
-      case 5:
-        return <h1>Success</h1>
+    //   case 2:
+    //     return (
+    //         <EducationDetails
+    //           values={values}
+    //           prevPage = {this.prevPage}
+    //           nextPage = {this.onNextPage}
+    //           handleChange = {this.handleChange}
+    //           addEducation={this.addEducation}
+    //         />
+    //     )
 
-      // TODO: Add default case
-    }
+    //   case 3:
+    //     return (
+    //       <ExperienceDetails
+    //         values={values}
+    //         prevPage = {this.prevPage}
+    //         nextPage = {this.onNextPage}
+    //         handleChange = {this.handleChange}
+    //         addExperience={this.addExperience}
+    //     />
+    //     )
+
+    //   case 4:
+    //     return <h1>Confirm</h1>
+
+    //   case 5:
+    //     return <h1>Success</h1>
+
+    //   // TODO: Add default case
+    // }
   }
 }
 

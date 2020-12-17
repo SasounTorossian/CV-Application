@@ -1,16 +1,7 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom'
 
 class ExperienceDetails extends Component {
-    continue = (e) => {
-        e.preventDefault()
-        this.props.nextPage()
-    }
-
-    goback = (e) => {
-        e.preventDefault()
-        this.props.prevPage()
-    }
-
     addExperience = (e) => { 
         e.preventDefault() 
         this.props.addExperience()
@@ -76,8 +67,8 @@ class ExperienceDetails extends Component {
                     })
                 }
                 <button onClick={this.addExperience}>Add new experience</button>
-                <button onClick={this.goback}>Prev Page</button>
-                <button onClick={this.continue}>Next Page</button>
+                <Link to="/education"><button>Prev Page</button></Link>
+                <Link to="/confirm"><button>Next Page</button></Link>
             </form>
         </div>
         )
