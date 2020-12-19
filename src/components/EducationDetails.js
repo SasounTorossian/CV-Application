@@ -11,7 +11,7 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
     return (
         <div>
             <h1>Education Details</h1>
-            <form>
+            <form noValidate autoComplete="off" onChange={handleChange}>
                 {
                     values.education.map((val, idx) => {
                         return (
@@ -20,7 +20,6 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     type="text"
                                     label={`School #${idx+1}`}
                                     value={values.education[idx].school} 
-                                    onChange={handleChange} 
                                     inputProps={{ "data-id": idx, "data-field-type": "school" }}
                                 />   
 
@@ -31,7 +30,6 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     type="text"
                                     label={`Course #${idx+1}`}
                                     value={values.education[idx].course} 
-                                    onChange={handleChange} 
                                     inputProps={{ "data-id": idx, "data-field-type": "course" }}
                                 />   
 
@@ -43,7 +41,6 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     type="date"
                                     label={`Start Date #${idx+1}`}
                                     value={values.education[idx].startDateEdu} 
-                                    onChange={handleChange} 
                                     inputProps={{ "data-id": idx, "data-field-type": "startDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
                                 />   
@@ -55,7 +52,6 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     type="date"
                                     label={`End Date #${idx+1}`}
                                     value={values.education[idx].endDateEdu} 
-                                    onChange={handleChange} 
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
                                 />   

@@ -50,11 +50,13 @@ class App extends Component {
 
   addEducation = () => {
     const newEdu = { school: "", course: "", startDateEdu: "", endDateEdu: ""}
+    console.log(newEdu)
     this.setState({ education: [...this.state.education, newEdu] })       
   }
 
-  addExperience = () => {
-    const newExp = {company: "", role: "", startDateExp: "", endDateExp: "", details: ""}
+  addExperience = (e) => {
+    const newExp = { company: "", role: "", startDateExp: "", endDateExp: "", details: ""}
+    console.log(newExp)
     this.setState({ experience: [...this.state.experience, newExp] })       
   }
 

@@ -11,7 +11,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
     return (
         <div>
             <h1>Experience Details</h1>
-            <form>
+            <form noValidate autoComplete="off" onChange={handleChange}>
                 {
                     values.experience.map((val, idx) => {
                         return (
@@ -19,8 +19,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                 <TextField 
                                     type="text"
                                     label={`Company #${idx+1}`}
-                                    value={values.education[idx].company} 
-                                    onChange={handleChange} 
+                                    value={values.experience[idx].company} 
                                     inputProps={{ "data-id": idx, "data-field-type": "company" }}
                                 />   
 
@@ -30,8 +29,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                 <TextField 
                                     type="text"
                                     label={`Role #${idx+1}`}
-                                    value={values.education[idx].role} 
-                                    onChange={handleChange} 
+                                    value={values.experience[idx].role} 
                                     inputProps={{ "data-id": idx, "data-field-type": "role" }}
                                 />   
 
@@ -41,8 +39,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                 <TextField 
                                     type="date"
                                     label={`Start Date #${idx+1}`}
-                                    value={values.education[idx].startDateExp} 
-                                    onChange={handleChange} 
+                                    value={values.experience[idx].startDateExp} 
                                     inputProps={{ "data-id": idx, "data-field-type": "startDateExp" }}
                                     InputLabelProps={{ shrink: true }}
                                 />   
@@ -53,8 +50,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                 <TextField 
                                     type="date"
                                     label={`End Date #${idx+1}`}
-                                    value={values.education[idx].endDateExp} 
-                                    onChange={handleChange} 
+                                    value={values.experience[idx].endDateExp} 
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateExp" }}
                                     InputLabelProps={{ shrink: true }}
                                 />   
@@ -65,8 +61,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                 <TextField 
                                     type="text"
                                     label={`Details of job #${idx+1}`}
-                                    value={values.education[idx].details} 
-                                    onChange={handleChange} 
+                                    value={values.experience[idx].details} 
                                     inputProps={{ "data-id": idx, "data-field-type": "details" }}
                                     multiline
                                     rows={5}
