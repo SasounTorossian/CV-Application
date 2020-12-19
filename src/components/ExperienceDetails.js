@@ -1,4 +1,5 @@
 import React from 'react'
+import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 const ExperienceDetails = ({values, handleChange, addExp}) => {
@@ -15,50 +16,64 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                     values.experience.map((val, idx) => {
                         return (
                             <div key={idx}>
-                                <label>{`Company #${idx+1}`}</label>
-                                <input
+                                <TextField 
                                     type="text"
-                                    data-id={idx}
-                                    className="company"
-                                    value={values.experience[idx].company}
-                                    onChange={handleChange}
-                                />    
+                                    label={`Company #${idx+1}`}
+                                    value={values.education[idx].company} 
+                                    onChange={handleChange} 
+                                    inputProps={{ "data-id": idx, "data-field-type": "company" }}
+                                />   
 
-                                <label>{`Role #${idx+1}`}</label>
-                                <input
+                                <br />
+                                <br />
+
+                                <TextField 
                                     type="text"
-                                    data-id={idx}
-                                    className="role"
-                                    value={values.experience[idx].role}
-                                    onChange={handleChange}
-                                />    
+                                    label={`Role #${idx+1}`}
+                                    value={values.education[idx].role} 
+                                    onChange={handleChange} 
+                                    inputProps={{ "data-id": idx, "data-field-type": "role" }}
+                                />   
 
-                                <label>{`Start Date #${idx+1}`}</label>
-                                <input
+                                <br />
+                                <br /> 
+
+                                <TextField 
                                     type="date"
-                                    data-id={idx}
-                                    className="startDateExp"
-                                    value={values.experience[idx].startDateExp}
-                                    onChange={handleChange}
+                                    label={`Start Date #${idx+1}`}
+                                    value={values.education[idx].startDateExp} 
+                                    onChange={handleChange} 
+                                    inputProps={{ "data-id": idx, "data-field-type": "startDateExp" }}
+                                    InputLabelProps={{ shrink: true }}
                                 />   
 
-                                <label>{`End Date #${idx+1}`}</label>
-                                <input
+                                <br />
+                                <br /> 
+
+                                <TextField 
                                     type="date"
-                                    data-id={idx}
-                                    className="endDateExp"
-                                    value={values.experience[idx].endDateExp}
-                                    onChange={handleChange}
+                                    label={`End Date #${idx+1}`}
+                                    value={values.education[idx].endDateExp} 
+                                    onChange={handleChange} 
+                                    inputProps={{ "data-id": idx, "data-field-type": "endDateExp" }}
+                                    InputLabelProps={{ shrink: true }}
                                 />   
 
-                                <label>{`Details #${idx+1}`}</label>
-                                <textarea
+                                <br />
+                                <br />   
+
+                                <TextField 
                                     type="text"
-                                    data-id={idx}
-                                    className="details"
-                                    value={values.experience[idx].details}
-                                    onChange={handleChange}
+                                    label={`Details of job #${idx+1}`}
+                                    value={values.education[idx].details} 
+                                    onChange={handleChange} 
+                                    inputProps={{ "data-id": idx, "data-field-type": "details" }}
+                                    multiline
+                                    rows={5}
                                 />   
+
+                                <br />
+                                <br />   
                             </div>
                         )
                     })

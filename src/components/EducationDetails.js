@@ -59,6 +59,9 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
                                 />   
+
+                                <br />
+                                <br /> 
                             </div>
                         )
                     })

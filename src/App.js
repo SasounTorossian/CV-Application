@@ -40,9 +40,9 @@ class App extends Component {
       education[e.target.dataset.id][e.target.dataset.fieldType] = e.target.value
       this.setState({ education })
     }
-    else if(["company", "role", "startDateExp", "endDateExp", "details"].includes(e.target.className)) {
+    else if(["company", "role", "startDateExp", "endDateExp", "details"].includes(e.target.dataset.fieldType)) {
       let experience = [...this.state.experience]
-      experience[e.target.dataset.id][e.target.className] = e.target.value
+      experience[e.target.dataset.id][e.target.dataset.fieldType] = e.target.value
       this.setState({ experience })
     }
      
