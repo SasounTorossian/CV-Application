@@ -30,8 +30,10 @@ class App extends Component {
   }
 
   handleChange = (e) => {
-    if(["name", "email", "phone"].includes(e.target.className)) {
-      this.setState({ [e.target.className]: e.target.value }) 
+    console.log(e.target.dataset)
+    //TODO: extract e.target
+    if(["name", "email", "phone"].includes(e.target.dataset.fieldType)) {
+      this.setState({ [e.target.dataset.fieldType]: e.target.value }) 
     }
     else if(["school", "course", "startDateEdu", "endDateEdu"].includes(e.target.className)) {
       let education = [...this.state.education]
@@ -57,6 +59,7 @@ class App extends Component {
   }
 
   //TODO: Grid sizing.
+  // TODO: Backdrop dimmer for confirmation page.
   render() {
     const {name, email, phone, education, experience} = this.state
     const values = {name, email, phone, education, experience}

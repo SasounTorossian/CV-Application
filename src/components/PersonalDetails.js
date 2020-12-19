@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 const PersonalDetails = ({values, handleChange}) => {
@@ -6,34 +7,35 @@ const PersonalDetails = ({values, handleChange}) => {
         <div>
             <h1>Personal Details</h1>
             <form noValidate autoComplete="off">
-                <label>Name:</label>
-                <input 
-                    type="text" 
-                    onChange = {handleChange}
-                    value={values.name}
-                    className="name"
-                />
-
-                <br />
-                <br />
-                
-                <label>Email:</label>    
-                <input 
-                    type="email" 
-                    onChange = {handleChange}
-                    value={values.email}
-                    className="email"
+                <TextField 
+                    type="text"
+                    label="Name" 
+                    value={values.name} 
+                    onChange={handleChange} 
+                    inputProps={{ "data-field-type": "name" }}
                 />
 
                 <br />
                 <br />
 
-                <label>Phone:</label>  
-                <input 
-                    type="text" 
-                    onChange = {handleChange}
-                    value={values.phone}
-                    className="phone"
+                <TextField 
+                    type="email"
+                    label="Email" 
+                    value={values.email} 
+                    onChange={handleChange} 
+                    inputProps={{ "data-field-type": "email" }}
+                />
+
+
+                <br />
+                <br />
+
+                <TextField 
+                    type="text"
+                    label="Phone" 
+                    value={values.phone} 
+                    onChange={handleChange} 
+                    inputProps={{ "data-field-type": "phone" }}
                 />
             
                 <br />
