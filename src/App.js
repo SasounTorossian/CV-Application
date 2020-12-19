@@ -35,9 +35,9 @@ class App extends Component {
     if(["name", "email", "phone"].includes(e.target.dataset.fieldType)) {
       this.setState({ [e.target.dataset.fieldType]: e.target.value }) 
     }
-    else if(["school", "course", "startDateEdu", "endDateEdu"].includes(e.target.className)) {
+    else if(["school", "course", "startDateEdu", "endDateEdu"].includes(e.target.dataset.fieldType)) {
       let education = [...this.state.education]
-      education[e.target.dataset.id][e.target.className] = e.target.value
+      education[e.target.dataset.id][e.target.dataset.fieldType] = e.target.value
       this.setState({ education })
     }
     else if(["company", "role", "startDateExp", "endDateExp", "details"].includes(e.target.className)) {

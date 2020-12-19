@@ -1,4 +1,5 @@
 import React from 'react'
+import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 const EducationDetails = ({values, handleChange, addEdu}) => {
@@ -15,40 +16,48 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                     values.education.map((val, idx) => {
                         return (
                             <div key={idx}>
-                                <label>{`School #${idx+1}`}</label>
-                                <input
+                                <TextField 
                                     type="text"
-                                    data-id={idx}
-                                    className="school"
-                                    value={values.education[idx].school}
-                                    onChange={handleChange}
-                                />    
-
-                                <label>{`Course #${idx+1}`}</label>
-                                <input
-                                    type="text"
-                                    data-id={idx}
-                                    className="course"
-                                    value={values.education[idx].course}
-                                    onChange={handleChange}
-                                />    
-
-                                <label>{`Start Date #${idx+1}`}</label>
-                                <input
-                                    type="date"
-                                    data-id={idx}
-                                    className="startDateEdu"
-                                    value={values.education[idx].startDateEdu}
-                                    onChange={handleChange}
+                                    label={`School #${idx+1}`}
+                                    value={values.education[idx].school} 
+                                    onChange={handleChange} 
+                                    inputProps={{ "data-id": idx, "data-field-type": "school" }}
                                 />   
 
-                                <label>{`End Date #${idx+1}`}</label>
-                                <input
+                                <br />
+                                <br />
+
+                                <TextField 
+                                    type="text"
+                                    label={`Course #${idx+1}`}
+                                    value={values.education[idx].course} 
+                                    onChange={handleChange} 
+                                    inputProps={{ "data-id": idx, "data-field-type": "course" }}
+                                />   
+
+                            
+                                <br />
+                                <br />
+                                
+                                <TextField 
                                     type="date"
-                                    data-id={idx}
-                                    className="endDateEdu"
-                                    value={values.education[idx].endDateEdu}
-                                    onChange={handleChange}
+                                    label={`Start Date #${idx+1}`}
+                                    value={values.education[idx].startDateEdu} 
+                                    onChange={handleChange} 
+                                    inputProps={{ "data-id": idx, "data-field-type": "startDateEdu" }}
+                                    InputLabelProps={{ shrink: true }}
+                                />   
+
+                                <br />
+                                <br />
+
+                                <TextField 
+                                    type="date"
+                                    label={`End Date #${idx+1}`}
+                                    value={values.education[idx].endDateEdu} 
+                                    onChange={handleChange} 
+                                    inputProps={{ "data-id": idx, "data-field-type": "endDateEdu" }}
+                                    InputLabelProps={{ shrink: true }}
                                 />   
                             </div>
                         )
