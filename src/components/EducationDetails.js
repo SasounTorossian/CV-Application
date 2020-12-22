@@ -2,7 +2,7 @@ import React from 'react'
 import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-const EducationDetails = ({values, handleChange, addEdu, errorState, inputMessage}) => {
+const EducationDetails = ({values, handleChange, addEdu, inputMessage}) => {
     const addEducation = (e) => { 
         e.preventDefault() 
         addEdu()
@@ -20,7 +20,7 @@ const EducationDetails = ({values, handleChange, addEdu, errorState, inputMessag
                                     type="text"
                                     label={`School-${idx+1}`}
                                     value={values.education[idx].school} 
-                                    onBlur={(e) => errorState(e, idx)}
+                                    onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "school" }}
                                     error={values.education[idx].schoolError}
                                     helperText={inputMessage(values.education[idx].schoolError)}
@@ -33,7 +33,7 @@ const EducationDetails = ({values, handleChange, addEdu, errorState, inputMessag
                                     type="text"
                                     label={`Course-${idx+1}`}
                                     value={values.education[idx].course} 
-                                    onBlur={(e) => errorState(e, idx)}
+                                    onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "course" }}
                                     error={values.education[idx].courseError}
                                     helperText={inputMessage(values.education[idx].courseError)}
@@ -47,7 +47,7 @@ const EducationDetails = ({values, handleChange, addEdu, errorState, inputMessag
                                     type="date"
                                     label={`Start Date-${idx+1}`}
                                     value={values.education[idx].startDateEdu} 
-                                    onBlur={(e) => errorState(e, idx)}
+                                    onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "startDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
                                     error={values.education[idx].startDateEduError}
@@ -61,7 +61,7 @@ const EducationDetails = ({values, handleChange, addEdu, errorState, inputMessag
                                     type="date"
                                     label={`End Date-${idx+1}`}
                                     value={values.education[idx].endDateEdu}
-                                    onBlur={(e) => errorState(e, idx)}
+                                    onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
                                     error={values.education[idx].endDateEduError}

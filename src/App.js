@@ -41,7 +41,7 @@ class App extends Component {
     }
   }
 
-  emptyInput = (input) => {return input === "" ? true : false} 
+  isEmptyInput = (input) => {return input === "" ? true : false} 
 
   inputMessage = (inputError) => {return inputError === true ? "Required" : ""} 
 
@@ -62,162 +62,30 @@ class App extends Component {
       }
   }
 
-
-  errorState = (e, id=0) => {
-      let field = e.target.dataset.fieldType
-      let value = e.target.value
-      console.log(id);
-
-      // Personal
-      if(field === "name") {
-          if(this.emptyInput(value)){this.setState({ nameError: true })}
-          else {this.setState({ nameError: false })} 
-      }
-      else if (field === "email") {
-          if(this.emptyInput(value)){this.setState({ emailError: 1 })}
-          else if (!this.validEmail(value)){this.setState({ emailError: 2 })} 
-          else {this.setState({ emailError: 0 })}
-      }
-      else if (field === "phone") {
-          if(this.emptyInput(value)){this.setState({ phoneError: true })}
-          else {this.setState({ phoneError: false })} 
-      }
-
-      // Education
-      else if(field === "school") {
-          if(this.emptyInput(this.state.education[id].school)) {
-            let education = [...this.state.education]
-            education[id]['schoolError'] = true
-            this.setState({ education })
-          }
-          else {
-            let education = [...this.state.education]
-            education[id]['schoolError'] = false 
-            this.setState({ education })
-          }
-      }
-      else if(field === "course") {
-          if(this.emptyInput(this.state.education[id].course)) {
-            let education = [...this.state.education]
-            education[id]['courseError'] = true
-            this.setState({ education })
-          }
-          else {
-            let education = [...this.state.education]
-            education[id]['courseError'] = false 
-            this.setState({ education })
-          }
-      }
-      else if(field === "startDateEdu") {
-          if(this.emptyInput(this.state.education[id].startDateEdu)) {
-            let education = [...this.state.education]
-            education[id]['startDateEduError'] = true
-            this.setState({ education })
-          }
-          else {
-            let education = [...this.state.education]
-            education[id]['startDateEduError'] = false 
-            this.setState({ education })
-          }
-      }
-      else if(field === "endDateEdu") {
-          if(this.emptyInput(this.state.education[id].endDateEdu)) {
-            let education = [...this.state.education]
-            education[id]['endDateEduError'] = true
-            this.setState({ education })
-          }
-          else {
-            let education = [...this.state.education]
-            education[id]['endDateEduError'] = false 
-            this.setState({ education })
-          }
-      }
-
-      //Experience
-      else if(field === "company") {
-        if(this.emptyInput(this.state.experience[id].company)) {
-          let experience = [...this.state.experience]
-          experience[id]['companyError'] = true
-          this.setState({ experience })
-        }
-        else {
-          let experience = [...this.state.experience]
-          experience[id]['companyError'] = false 
-          this.setState({ experience })
-        }
-      }
-      else if(field === "role") {
-          if(this.emptyInput(this.state.experience[id].role)) {
-            let experience = [...this.state.experience]
-            experience[id]['roleError'] = true
-            this.setState({ experience })
-          }
-          else {
-            let experience = [...this.state.experience]
-            experience[id]['roleError'] = false 
-            this.setState({ experience })
-          }
-      }
-      else if(field === "startDateExp") {
-          if(this.emptyInput(this.state.experience[id].startDateExp)) {
-            let experience = [...this.state.experience]
-            experience[id]['startDateExpError'] = true
-            this.setState({ experience })
-          }
-          else {
-            let experience = [...this.state.experience]
-            experience[id]['startDateExpError'] = false 
-            this.setState({ experience })
-          }
-      }
-      else if(field === "endDateExp") {
-          if(this.emptyInput(this.state.experience[id].endDateExp)) {
-            let experience = [...this.state.experience]
-            experience[id]['endDateExpError'] = true
-            this.setState({ experience })
-          }
-          else {
-            let experience = [...this.state.experience]
-            experience[id]['endDateExpError'] = false 
-            this.setState({ experience })
-          }
-      }
-      else if(field === "details") {
-        if(this.emptyInput(this.state.experience[id].details)) {
-          let experience = [...this.state.experience]
-          experience[id]['detailsError'] = true
-          this.setState({ experience })
-        }
-        else {
-          let experience = [...this.state.experience]
-          experience[id]['detailsError'] = false 
-          this.setState({ experience })
-        }
-    }
-    
-  }
-
   handleChange = (e) => {
     let field = e.target.dataset.fieldType
     let id = e.target.dataset.id
-    let values = e.target.value
-    
+    let value = e.target.value
     
     if(["name", "email", "phone"].includes(field)) {
-      this.setState({ [field]: values }) //Update display. 
+      let stateError
+      if(field === "email") {stateError =  this.isEmptyInput(value) ? 1 : !this.validEmail(value) ? 2 : 0}
+      else stateError = this.isEmptyInput(value) ? true : false
+      this.setState({ [field]: value })
+      this.setState({[field+"Error"]: stateError})
     }
     else if(["school", "course", "startDateEdu", "endDateEdu"].includes(field)) {
       let education = [...this.state.education]
-      education[id][field] = values
+      education[id][field] = value
+      education[id][field+"Error"] = this.isEmptyInput(value)
       this.setState({ education })
     }
     else if(["company", "role", "startDateExp", "endDateExp", "details"].includes(field)) {
       let experience = [...this.state.experience]
-      experience[id][field] = values
+      experience[id][field] = value
+      experience[id][field+"Error"] = this.isEmptyInput(value)
       this.setState({ experience })
     }
-    
-    this.errorState(e, id)
   }
 
   addEducation = () => {
@@ -251,7 +119,6 @@ class App extends Component {
                   {...props} 
                   values={values}
                   handleChange={this.handleChange} 
-                  errorState={this.errorState}
                   inputMessage={this.inputMessage} 
                   emailMessage={this.emailMessage}
                 />
@@ -266,7 +133,6 @@ class App extends Component {
                   values={values}
                   handleChange = {this.handleChange}
                   addEdu={this.addEducation}
-                  errorState={this.errorState}
                   inputMessage={this.inputMessage} 
                 />
               )} 
@@ -280,7 +146,6 @@ class App extends Component {
                   values={values}
                   handleChange = {this.handleChange}
                   addExp={this.addExperience}
-                  errorState={this.errorState}
                   inputMessage={this.inputMessage} 
                 />
               )} 

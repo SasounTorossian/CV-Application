@@ -2,7 +2,7 @@ import React from 'react'
 import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-const ExperienceDetails = ({values, handleChange, addExp, errorState, inputMessage}) => {
+const ExperienceDetails = ({values, handleChange, addExp, inputMessage}) => {
     const addExperience = (e) => { 
         e.preventDefault() 
         addExp()
@@ -20,7 +20,7 @@ const ExperienceDetails = ({values, handleChange, addExp, errorState, inputMessa
                                     type="text"
                                     label={`Company-${idx+1}`}
                                     value={values.experience[idx].company} 
-                                    onBlur={(e) => errorState(e, idx)}
+                                    onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "company" }}
                                     error={values.experience[idx].companyError}
                                     helperText={inputMessage(values.experience[idx].companyError)}
@@ -33,7 +33,7 @@ const ExperienceDetails = ({values, handleChange, addExp, errorState, inputMessa
                                     type="text"
                                     label={`Role-${idx+1}`}
                                     value={values.experience[idx].role} 
-                                    onBlur={(e) => errorState(e, idx)}
+                                    onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "role" }}
                                     error={values.experience[idx].roleError}
                                     helperText={inputMessage(values.experience[idx].roleError)}
@@ -46,7 +46,7 @@ const ExperienceDetails = ({values, handleChange, addExp, errorState, inputMessa
                                     type="date"
                                     label={`Start Date-${idx+1}`}
                                     value={values.experience[idx].startDateExp} 
-                                    onBlur={(e) => errorState(e, idx)}
+                                    onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "startDateExp" }}
                                     InputLabelProps={{ shrink: true }}
                                     error={values.experience[idx].startDateExpError}
@@ -60,9 +60,9 @@ const ExperienceDetails = ({values, handleChange, addExp, errorState, inputMessa
                                     type="date"
                                     label={`End Date-${idx+1}`}
                                     value={values.experience[idx].endDateExp} 
+                                    onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateExp" }}
                                     InputLabelProps={{ shrink: true }}
-                                    onBlur={(e) => errorState(e, idx)}
                                     error={values.experience[idx].endDateExpError}
                                     helperText={inputMessage(values.experience[idx].endDateExpError)}
                                 />   
@@ -74,7 +74,7 @@ const ExperienceDetails = ({values, handleChange, addExp, errorState, inputMessa
                                     type="text"
                                     label={`Details of job-${idx+1}`}
                                     value={values.experience[idx].details} 
-                                    onBlur={(e) => errorState(e, idx)}
+                                    onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "details" }}
                                     multiline
                                     rows={5}

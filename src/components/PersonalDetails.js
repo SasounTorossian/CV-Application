@@ -2,7 +2,7 @@ import React from 'react'
 import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-const PersonalDetails = ({values, handleChange, errorState, inputMessage, emailMessage}) => {
+const PersonalDetails = ({values, handleChange, inputMessage, emailMessage}) => {
     return (
         
         <div>
@@ -12,7 +12,7 @@ const PersonalDetails = ({values, handleChange, errorState, inputMessage, emailM
                     type="text"
                     label="Name" 
                     value={values.name} 
-                    onBlur={errorState}
+                    onBlur={handleChange}
                     inputProps={{ "data-field-type": "name" }}
                     error={values.nameError}
                     helperText={values.nameError ? "Required" : ""}
@@ -26,7 +26,7 @@ const PersonalDetails = ({values, handleChange, errorState, inputMessage, emailM
                     type="email"
                     label="Email" 
                     value={values.email} 
-                    onBlur={errorState}
+                    onBlur={handleChange}
                     inputProps={{ "data-field-type": "email" }}
                     error={values.emailError ? true : false}
                     helperText={emailMessage(values.emailError)}
@@ -41,7 +41,7 @@ const PersonalDetails = ({values, handleChange, errorState, inputMessage, emailM
                     label="Phone" 
                     name="phone"
                     value={values.phone} 
-                    onBlur={errorState}
+                    onBlur={handleChange}
                     inputProps={{ "data-field-type": "phone" }}
                     error={values.phoneError}
                     helperText={values.phoneError ? "Required" : ""}
