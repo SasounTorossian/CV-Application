@@ -10,69 +10,62 @@ class App extends Component {
     super(props)
 
     this.state = {
-      name: "", //Put in array or object
-      nameError: false,
-      email: "",
-      emailError: 0,
-      phone: "",
-      phoneError: false,
+      personal: {
+        name: "", 
+        email: "",
+        phone: "",
+        nameError: false,
+        emailError: 0,
+        phoneError: false,
+      },
       education: [{
         school: "",
-        schoolError: false,
         course: "",
-        courseError: false,
         startDateEdu: "",
-        startDateEduError: false,
         endDateEdu: "",
+        schoolError: false,
+        courseError: false,
+        startDateEduError: false,
         endDateEduError: false,      
       }],
       experience: [{
         company: "",
-        companyError: false,
         role: "",
-        roleError: false,
         startDateExp: "",
-        startDateExpError: false,
         endDateExp: "",
-        endDateExpError: false,
         details: "",
+        companyError: false,
+        roleError: false,
+        startDateExpError: false,
+        endDateExpError: false,
         detailsError: false,      
       }],
     }
   }
 
-  isEmptyInput = (input) => {return input === "" ? true : false} 
-
-  inputMessage = (inputError) => {return inputError === true ? "Required" : ""} 
+  isEmptyInput = (input) => { return input === "" ? true : false } 
 
   validEmail = (email) => {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(String(email).toLowerCase());
   }
 
-  emailMessage = (emailErrorCode) => {
-      if(emailErrorCode === 2) {
-        return "Invalid Email" 
-      }
-      else if(emailErrorCode === 1){
-        return "Required" 
-      }
-      else {
-        return ""
-      }
-  }
-
   handleChange = (e) => {
     let field = e.target.dataset.fieldType
     let id = e.target.dataset.id
     let value = e.target.value
-    
+
     if(["name", "email", "phone"].includes(field)) {
       let stateError
-      if(field === "email") {stateError =  this.isEmptyInput(value) ? 1 : !this.validEmail(value) ? 2 : 0}
-      else stateError = this.isEmptyInput(value) ? true : false
-      this.setState({ [field]: value })
-      this.setState({[field+"Error"]: stateError})
+      let personal = {...this.state.personal}
+      personal[field] = value
+
+      if(field === "email") { stateError =  this.isEmptyInput(value) ? 1 : !this.validEmail(value) ? 2 : 0 }
+      else { stateError = this.isEmptyInput(value) ? true : false }
+
+      personal[field+"Error"] = stateError
+      this.setState({ personal })
+
     }
     else if(["school", "course", "startDateEdu", "endDateEdu"].includes(field)) {
       let education = [...this.state.education]
@@ -89,20 +82,40 @@ class App extends Component {
   }
 
   addEducation = () => {
-    const newEdu = { school: "", course: "", startDateEdu: "", endDateEdu: ""}
+    const newEdu = {
+      school: "",
+      course: "",
+      startDateEdu: "",
+      endDateEdu: "",
+      schoolError: false,
+      courseError: false,
+      startDateEduError: false,
+      endDateEduError: false,      
+    }
     this.setState({ education: [...this.state.education, newEdu] })       
   }
 
   addExperience = () => {
-    const newExp = { company: "", role: "", startDateExp: "", endDateExp: "", details: ""}
+    const newExp = {
+      company: "",
+      role: "",
+      startDateExp: "",
+      endDateExp: "",
+      details: "",
+      companyError: false,
+      roleError: false,
+      startDateExpError: false,
+      endDateExpError: false,
+      detailsError: false,      
+    }
     this.setState({ experience: [...this.state.experience, newExp] })       
   }
 
   //TODO: Grid sizing.
   // TODO: Backdrop dimmer for confirmation page.
   render() {
-    const {name, nameError, email, emailError, phone, phoneError, education, experience} = this.state
-    const values = {name, nameError, email, emailError, phone, phoneError, education, experience}
+    const {personal, education, experience} = this.state
+    const values = {personal, education, experience}
 
     return (
       <Router>
@@ -119,8 +132,6 @@ class App extends Component {
                   {...props} 
                   values={values}
                   handleChange={this.handleChange} 
-                  inputMessage={this.inputMessage} 
-                  emailMessage={this.emailMessage}
                 />
               )} 
             />
@@ -133,7 +144,6 @@ class App extends Component {
                   values={values}
                   handleChange = {this.handleChange}
                   addEdu={this.addEducation}
-                  inputMessage={this.inputMessage} 
                 />
               )} 
             />
@@ -146,7 +156,6 @@ class App extends Component {
                   values={values}
                   handleChange = {this.handleChange}
                   addExp={this.addExperience}
-                  inputMessage={this.inputMessage} 
                 />
               )} 
             />

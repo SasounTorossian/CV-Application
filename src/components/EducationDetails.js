@@ -2,7 +2,10 @@ import React from 'react'
 import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-const EducationDetails = ({values, handleChange, addEdu, inputMessage}) => {
+const EducationDetails = ({values, handleChange, addEdu}) => {
+
+    const inputMessage = (inputError) => { return inputError === true ? "Required" : "" } 
+    
     const addEducation = (e) => { 
         e.preventDefault() 
         addEdu()

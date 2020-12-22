@@ -2,7 +2,10 @@ import React from 'react'
 import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-const ExperienceDetails = ({values, handleChange, addExp, inputMessage}) => {
+const ExperienceDetails = ({values, handleChange, addExp}) => {
+
+    const inputMessage = (inputError) => { return inputError === true ? "Required" : "" } 
+    
     const addExperience = (e) => { 
         e.preventDefault() 
         addExp()
