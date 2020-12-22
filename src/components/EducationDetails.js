@@ -2,7 +2,7 @@ import React from 'react'
 import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-const EducationDetails = ({values, handleChange, addEdu}) => {
+const EducationDetails = ({values, handleChange, addEdu, errorState, inputMessage}) => {
     const addEducation = (e) => { 
         e.preventDefault() 
         addEdu()
@@ -18,19 +18,25 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                             <div key={idx}>
                                 <TextField 
                                     type="text"
-                                    label={`School #${idx+1}`}
+                                    label={`School-${idx+1}`}
                                     value={values.education[idx].school} 
+                                    onBlur={(e) => errorState(e, idx)}
                                     inputProps={{ "data-id": idx, "data-field-type": "school" }}
-                                />   
+                                    error={values.education[idx].schoolError}
+                                    helperText={inputMessage(values.education[idx].schoolError)}
+                                />  
 
                                 <br />
                                 <br />
 
                                 <TextField 
                                     type="text"
-                                    label={`Course #${idx+1}`}
+                                    label={`Course-${idx+1}`}
                                     value={values.education[idx].course} 
+                                    onBlur={(e) => errorState(e, idx)}
                                     inputProps={{ "data-id": idx, "data-field-type": "course" }}
+                                    error={values.education[idx].courseError}
+                                    helperText={inputMessage(values.education[idx].courseError)}
                                 />   
 
                             
@@ -39,10 +45,13 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                 
                                 <TextField 
                                     type="date"
-                                    label={`Start Date #${idx+1}`}
+                                    label={`Start Date-${idx+1}`}
                                     value={values.education[idx].startDateEdu} 
+                                    onBlur={(e) => errorState(e, idx)}
                                     inputProps={{ "data-id": idx, "data-field-type": "startDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
+                                    error={values.education[idx].startDateEduError}
+                                    helperText={inputMessage(values.education[idx].startDateEduError)}
                                 />   
 
                                 <br />
@@ -50,10 +59,13 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
 
                                 <TextField 
                                     type="date"
-                                    label={`End Date #${idx+1}`}
-                                    value={values.education[idx].endDateEdu} 
+                                    label={`End Date-${idx+1}`}
+                                    value={values.education[idx].endDateEdu}
+                                    onBlur={(e) => errorState(e, idx)}
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
+                                    error={values.education[idx].endDateEduError}
+                                    helperText={inputMessage(values.education[idx].endDateEduError)}
                                 />   
 
                                 <br />

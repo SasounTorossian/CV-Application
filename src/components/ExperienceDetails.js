@@ -2,7 +2,7 @@ import React from 'react'
 import { TextField } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
-const ExperienceDetails = ({values, handleChange, addExp}) => {
+const ExperienceDetails = ({values, handleChange, addExp, errorState, inputMessage}) => {
     const addExperience = (e) => { 
         e.preventDefault() 
         addExp()
@@ -18,9 +18,12 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                             <div key={idx}>
                                 <TextField 
                                     type="text"
-                                    label={`Company #${idx+1}`}
+                                    label={`Company-${idx+1}`}
                                     value={values.experience[idx].company} 
+                                    onBlur={(e) => errorState(e, idx)}
                                     inputProps={{ "data-id": idx, "data-field-type": "company" }}
+                                    error={values.experience[idx].companyError}
+                                    helperText={inputMessage(values.experience[idx].companyError)}
                                 />   
 
                                 <br />
@@ -28,9 +31,12 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
 
                                 <TextField 
                                     type="text"
-                                    label={`Role #${idx+1}`}
+                                    label={`Role-${idx+1}`}
                                     value={values.experience[idx].role} 
+                                    onBlur={(e) => errorState(e, idx)}
                                     inputProps={{ "data-id": idx, "data-field-type": "role" }}
+                                    error={values.experience[idx].roleError}
+                                    helperText={inputMessage(values.experience[idx].roleError)}
                                 />   
 
                                 <br />
@@ -38,10 +44,13 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
 
                                 <TextField 
                                     type="date"
-                                    label={`Start Date #${idx+1}`}
+                                    label={`Start Date-${idx+1}`}
                                     value={values.experience[idx].startDateExp} 
+                                    onBlur={(e) => errorState(e, idx)}
                                     inputProps={{ "data-id": idx, "data-field-type": "startDateExp" }}
                                     InputLabelProps={{ shrink: true }}
+                                    error={values.experience[idx].startDateExpError}
+                                    helperText={inputMessage(values.experience[idx].startDateExpError)}
                                 />   
 
                                 <br />
@@ -49,10 +58,13 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
 
                                 <TextField 
                                     type="date"
-                                    label={`End Date #${idx+1}`}
+                                    label={`End Date-${idx+1}`}
                                     value={values.experience[idx].endDateExp} 
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateExp" }}
                                     InputLabelProps={{ shrink: true }}
+                                    onBlur={(e) => errorState(e, idx)}
+                                    error={values.experience[idx].endDateExpError}
+                                    helperText={inputMessage(values.experience[idx].endDateExpError)}
                                 />   
 
                                 <br />
@@ -60,11 +72,14 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
 
                                 <TextField 
                                     type="text"
-                                    label={`Details of job #${idx+1}`}
+                                    label={`Details of job-${idx+1}`}
                                     value={values.experience[idx].details} 
+                                    onBlur={(e) => errorState(e, idx)}
                                     inputProps={{ "data-id": idx, "data-field-type": "details" }}
                                     multiline
                                     rows={5}
+                                    error={values.experience[idx].detailsError}
+                                    helperText={inputMessage(values.experience[idx].detailsError)}
                                 />   
 
                                 <br />
