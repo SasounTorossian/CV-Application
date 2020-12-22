@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 
 const ExperienceDetails = ({values, handleChange, addExp}) => {
 
-    const inputMessage = (inputError) => { return inputError === true ? "Required" : "" } 
-    
     const addExperience = (e) => { 
         e.preventDefault() 
         addExp()
@@ -25,8 +23,8 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                     value={values.experience[idx].company} 
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "company" }}
-                                    error={values.experience[idx].companyError}
-                                    helperText={inputMessage(values.experience[idx].companyError)}
+                                    error={!!values.experience[idx].companyError}
+                                    helperText={values.experience[idx].companyError}
                                 />   
 
                                 <br />
@@ -38,8 +36,8 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                     value={values.experience[idx].role} 
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "role" }}
-                                    error={values.experience[idx].roleError}
-                                    helperText={inputMessage(values.experience[idx].roleError)}
+                                    error={!!values.experience[idx].roleError}
+                                    helperText={values.experience[idx].roleError}
                                 />   
 
                                 <br />
@@ -52,8 +50,8 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "startDateExp" }}
                                     InputLabelProps={{ shrink: true }}
-                                    error={values.experience[idx].startDateExpError}
-                                    helperText={inputMessage(values.experience[idx].startDateExpError)}
+                                    error={!!values.experience[idx].startDateExpError}
+                                    helperText={values.experience[idx].startDateExpError}
                                 />   
 
                                 <br />
@@ -66,8 +64,8 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateExp" }}
                                     InputLabelProps={{ shrink: true }}
-                                    error={values.experience[idx].endDateExpError}
-                                    helperText={inputMessage(values.experience[idx].endDateExpError)}
+                                    error={!!values.experience[idx].endDateExpError}
+                                    helperText={values.experience[idx].endDateExpError}
                                 />   
 
                                 <br />
@@ -81,8 +79,8 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                     inputProps={{ "data-id": idx, "data-field-type": "details" }}
                                     multiline
                                     rows={5}
-                                    error={values.experience[idx].detailsError}
-                                    helperText={inputMessage(values.experience[idx].detailsError)}
+                                    error={!!values.experience[idx].detailsError}
+                                    helperText={values.experience[idx].detailsError}
                                 />   
 
                                 <br />

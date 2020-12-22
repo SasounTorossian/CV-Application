@@ -14,19 +14,19 @@ class App extends Component {
         name: "", 
         email: "",
         phone: "",
-        nameError: false,
-        emailError: 0,
-        phoneError: false,
+        nameError: "",
+        emailError: "",
+        phoneError: "",
       },
       education: [{
         school: "",
         course: "",
         startDateEdu: "",
         endDateEdu: "",
-        schoolError: false,
-        courseError: false,
-        startDateEduError: false,
-        endDateEduError: false,      
+        schoolError: "",
+        courseError: "",
+        startDateEduError: "",
+        endDateEduError: "",      
       }],
       experience: [{
         company: "",
@@ -34,16 +34,18 @@ class App extends Component {
         startDateExp: "",
         endDateExp: "",
         details: "",
-        companyError: false,
-        roleError: false,
-        startDateExpError: false,
-        endDateExpError: false,
-        detailsError: false,      
+        companyError: "",
+        roleError: "",
+        startDateExpError: "",
+        endDateExpError: "",
+        detailsError: "",      
       }],
     }
   }
 
-  isEmptyInput = (input) => { return input === "" ? true : false } 
+  isEmptyInput = (input) => { return input === "" ? "Required" : "" } 
+
+  isInvalidEmail = (input) => { return input === "" ? "Required" : !this.validEmail(input) ? "Invalid" : "" }
 
   validEmail = (email) => {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -56,16 +58,10 @@ class App extends Component {
     let value = e.target.value
 
     if(["name", "email", "phone"].includes(field)) {
-      let stateError
       let personal = {...this.state.personal}
       personal[field] = value
-
-      if(field === "email") { stateError =  this.isEmptyInput(value) ? 1 : !this.validEmail(value) ? 2 : 0 }
-      else { stateError = this.isEmptyInput(value) ? true : false }
-
-      personal[field+"Error"] = stateError
+      personal[field+"Error"] = (field === "email") ? this.isInvalidEmail(value) : this.isEmptyInput(value)
       this.setState({ personal })
-
     }
     else if(["school", "course", "startDateEdu", "endDateEdu"].includes(field)) {
       let education = [...this.state.education]
@@ -87,10 +83,10 @@ class App extends Component {
       course: "",
       startDateEdu: "",
       endDateEdu: "",
-      schoolError: false,
-      courseError: false,
-      startDateEduError: false,
-      endDateEduError: false,      
+      schoolError: "",
+      courseError: "",
+      startDateEduError: "",
+      endDateEduError: "",      
     }
     this.setState({ education: [...this.state.education, newEdu] })       
   }
@@ -102,11 +98,11 @@ class App extends Component {
       startDateExp: "",
       endDateExp: "",
       details: "",
-      companyError: false,
-      roleError: false,
-      startDateExpError: false,
-      endDateExpError: false,
-      detailsError: false,      
+      companyError: "",
+      roleError: "",
+      startDateExpError: "",
+      endDateExpError: "",
+      detailsError: "",      
     }
     this.setState({ experience: [...this.state.experience, newExp] })       
   }

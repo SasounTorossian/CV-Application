@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 
 const EducationDetails = ({values, handleChange, addEdu}) => {
 
-    const inputMessage = (inputError) => { return inputError === true ? "Required" : "" } 
-    
     const addEducation = (e) => { 
         e.preventDefault() 
         addEdu()
@@ -25,8 +23,8 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     value={values.education[idx].school} 
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "school" }}
-                                    error={values.education[idx].schoolError}
-                                    helperText={inputMessage(values.education[idx].schoolError)}
+                                    error={!!values.education[idx].schoolError}
+                                    helperText={values.education[idx].schoolError}
                                 />  
 
                                 <br />
@@ -38,8 +36,8 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     value={values.education[idx].course} 
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "course" }}
-                                    error={values.education[idx].courseError}
-                                    helperText={inputMessage(values.education[idx].courseError)}
+                                    error={!!values.education[idx].courseError}
+                                    helperText={values.education[idx].courseError}
                                 />   
 
                             
@@ -53,8 +51,8 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "startDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
-                                    error={values.education[idx].startDateEduError}
-                                    helperText={inputMessage(values.education[idx].startDateEduError)}
+                                    error={!!values.education[idx].startDateEduError}
+                                    helperText={values.education[idx].startDateEduError}
                                 />   
 
                                 <br />
@@ -67,8 +65,8 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
-                                    error={values.education[idx].endDateEduError}
-                                    helperText={inputMessage(values.education[idx].endDateEduError)}
+                                    error={!!values.education[idx].endDateEduError}
+                                    helperText={values.education[idx].endDateEduError}
                                 />   
 
                                 <br />
