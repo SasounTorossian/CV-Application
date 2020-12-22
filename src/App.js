@@ -30,19 +30,21 @@ class App extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.dataset)
-    //TODO: extract e.target
-    if(["name", "email", "phone"].includes(e.target.dataset.fieldType)) {
-      this.setState({ [e.target.dataset.fieldType]: e.target.value }) 
+    let field = e.target.dataset.fieldType
+    let id = e.target.dataset.id
+    let values = e.target.value
+
+    if(["name", "email", "phone"].includes(field)) {
+      this.setState({ [field]: values }) 
     }
-    else if(["school", "course", "startDateEdu", "endDateEdu"].includes(e.target.dataset.fieldType)) {
+    else if(["school", "course", "startDateEdu", "endDateEdu"].includes(field)) {
       let education = [...this.state.education]
-      education[e.target.dataset.id][e.target.dataset.fieldType] = e.target.value
+      education[id][field] = values
       this.setState({ education })
     }
-    else if(["company", "role", "startDateExp", "endDateExp", "details"].includes(e.target.dataset.fieldType)) {
+    else if(["company", "role", "startDateExp", "endDateExp", "details"].includes(field)) {
       let experience = [...this.state.experience]
-      experience[e.target.dataset.id][e.target.dataset.fieldType] = e.target.value
+      experience[id][field] = values
       this.setState({ experience })
     }
      
@@ -50,13 +52,11 @@ class App extends Component {
 
   addEducation = () => {
     const newEdu = { school: "", course: "", startDateEdu: "", endDateEdu: ""}
-    console.log(newEdu)
     this.setState({ education: [...this.state.education, newEdu] })       
   }
 
-  addExperience = (e) => {
+  addExperience = () => {
     const newExp = { company: "", role: "", startDateExp: "", endDateExp: "", details: ""}
-    console.log(newExp)
     this.setState({ experience: [...this.state.experience, newExp] })       
   }
 
