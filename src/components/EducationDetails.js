@@ -26,7 +26,7 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     value={values.education[idx].school} 
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "school" }}
-                                    error={!!values.education[idx].schoolError}
+                                    error={!!values.education[idx].schoolError && values.education[idx].schoolError.length > 1}
                                     helperText={values.education[idx].schoolError}
                                 />  
 
@@ -39,7 +39,7 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     value={values.education[idx].course} 
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "course" }}
-                                    error={!!values.education[idx].courseError}
+                                    error={!!values.education[idx].courseError && values.education[idx].courseError.length > 1}
                                     helperText={values.education[idx].courseError}
                                 />   
 
@@ -54,7 +54,7 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "startDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
-                                    error={!!values.education[idx].startDateEduError}
+                                    error={!!values.education[idx].startDateEduError && values.education[idx].startDateEduError.length > 1}
                                     helperText={values.education[idx].startDateEduError}
                                 />   
 
@@ -68,7 +68,7 @@ const EducationDetails = ({values, handleChange, addEdu}) => {
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateEdu" }}
                                     InputLabelProps={{ shrink: true }}
-                                    error={!!values.education[idx].endDateEduError}
+                                    error={!!values.education[idx].endDateEduError && values.education[idx].endDateEduError.length > 1}
                                     helperText={values.education[idx].endDateEduError}
                                 />   
 

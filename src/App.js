@@ -14,19 +14,19 @@ class App extends Component {
         name: "", 
         email: "",
         phone: "",
-        nameError: "",
-        emailError: "",
-        phoneError: "",
+        nameError: " ",
+        emailError: " ",
+        phoneError: " ",
       },
       education: [{
         school: "",
         course: "",
         startDateEdu: "",
         endDateEdu: "",
-        schoolError: "",
-        courseError: "",
-        startDateEduError: "",
-        endDateEduError: "",      
+        schoolError: " ",
+        courseError: " ",
+        startDateEduError: " ",
+        endDateEduError: " ",      
       }],
       experience: [{
         company: "",
@@ -34,18 +34,18 @@ class App extends Component {
         startDateExp: "",
         endDateExp: "",
         details: "",
-        companyError: "",
-        roleError: "",
-        startDateExpError: "",
-        endDateExpError: "",
-        detailsError: "",      
+        companyError: " ",
+        roleError: " ",
+        startDateExpError: " ",
+        endDateExpError: " ",
+        detailsError: " ",      
       }],
     }
   }
 
-  isEmptyInput = (input) => { return input === "" ? "Required" : "" } 
+  isEmptyInput = (input) => { return input === "" ? "Required" : " " } 
 
-  isInvalidEmail = (input) => { return input === "" ? "Required" : !this.validEmail(input) ? "Invalid" : "" }
+  isInvalidEmail = (input) => { return input === "" ? "Required" : !this.validEmail(input) ? "Invalid" : " " }
 
   validEmail = (email) => {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -83,10 +83,10 @@ class App extends Component {
       course: "",
       startDateEdu: "",
       endDateEdu: "",
-      schoolError: "",
-      courseError: "",
-      startDateEduError: "",
-      endDateEduError: "",      
+      schoolError: " ",
+      courseError: " ",
+      startDateEduError: " ",
+      endDateEduError: " ",      
     }
     this.setState({ education: [...this.state.education, newEdu] })       
   }
@@ -98,11 +98,11 @@ class App extends Component {
       startDateExp: "",
       endDateExp: "",
       details: "",
-      companyError: "",
-      roleError: "",
-      startDateExpError: "",
-      endDateExpError: "",
-      detailsError: "",      
+      companyError: " ",
+      roleError: " ",
+      startDateExpError: " ",
+      endDateExpError: " ",
+      detailsError: " ",      
     }
     this.setState({ experience: [...this.state.experience, newExp] })       
   }

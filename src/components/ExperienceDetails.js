@@ -26,7 +26,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                     value={values.experience[idx].company} 
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "company" }}
-                                    error={!!values.experience[idx].companyError}
+                                    error={!!values.experience[idx].companyError && values.experience[idx].companyError.length > 1}
                                     helperText={values.experience[idx].companyError}
                                 />   
 
@@ -39,7 +39,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                     value={values.experience[idx].role} 
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "role" }}
-                                    error={!!values.experience[idx].roleError}
+                                    error={!!values.experience[idx].roleError && values.experience[idx].roleError.length > 1}
                                     helperText={values.experience[idx].roleError}
                                 />   
 
@@ -53,7 +53,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "startDateExp" }}
                                     InputLabelProps={{ shrink: true }}
-                                    error={!!values.experience[idx].startDateExpError}
+                                    error={!!values.experience[idx].startDateExpError && values.experience[idx].startDateExpError.length > 1}
                                     helperText={values.experience[idx].startDateExpError}
                                 />   
 
@@ -67,7 +67,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                     onBlur={handleChange}
                                     inputProps={{ "data-id": idx, "data-field-type": "endDateExp" }}
                                     InputLabelProps={{ shrink: true }}
-                                    error={!!values.experience[idx].endDateExpError}
+                                    error={!!values.experience[idx].endDateExpError && values.experience[idx].endDateExpError.length > 1}
                                     helperText={values.experience[idx].endDateExpError}
                                 />   
 
@@ -82,7 +82,7 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                                     inputProps={{ "data-id": idx, "data-field-type": "details" }}
                                     multiline
                                     rows={5}
-                                    error={!!values.experience[idx].detailsError}
+                                    error={!!values.experience[idx].detailsError && values.experience[idx].detailsError.length > 1}
                                     helperText={values.experience[idx].detailsError}
                                 />   
 
