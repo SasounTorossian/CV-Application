@@ -4,7 +4,6 @@ import {ArrowForward, ArrowBack, Add} from '@material-ui/icons';
 import { Link } from 'react-router-dom'
 
 const ExperienceDetails = ({values, handleChange, addExp}) => {
-
     const addExperience = (e) => { 
         e.preventDefault() 
         addExp()
