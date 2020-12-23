@@ -1,9 +1,15 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import { Typography, AppBar, Toolbar, IconButton, Menu, MenuItem } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
 import { withRouter } from 'react-router-dom'
-import WorkIcon from '@material-ui/icons/Work';
+import { makeStyles, 
+        Typography, 
+        AppBar, 
+        Toolbar, 
+        IconButton, 
+        Menu, 
+        MenuItem, 
+        ListItemIcon  
+      } from '@material-ui/core'
+import {Menu as MenuIcon, Person, School, Work} from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,9 +63,34 @@ const Header = ({history}) => {
                         open={Boolean(anchorEl)}
                         onClose={() => handleMenuClick(null)}
                     >
-                        <MenuItem onClick={() => handleMenuClick("/personal")}>Personal</MenuItem>
-                        <MenuItem onClick={() => handleMenuClick("/education")}>Education </MenuItem>
-                        <MenuItem onClick={() => handleMenuClick("/experience")}>Experience</MenuItem>
+
+                            
+                        <MenuItem 
+                          onClick={() => handleMenuClick("/personal")}
+                        >
+                          <ListItemIcon>
+                            <Person />
+                          </ListItemIcon>
+                          <Typography>Personal</Typography>
+                        </MenuItem>
+
+                        <MenuItem 
+                          onClick={() => handleMenuClick("/education")}
+                        >
+                          <ListItemIcon>
+                            <School />
+                          </ListItemIcon>
+                          <Typography>Education</Typography>
+                        </MenuItem>
+
+                        <MenuItem 
+                          onClick={() => handleMenuClick("/experience")}
+                        >
+                          <ListItemIcon>
+                            <Work />
+                          </ListItemIcon>
+                          <Typography>Experience</Typography>
+                        </MenuItem>
                     </Menu>
                 </Toolbar>
             </AppBar>
