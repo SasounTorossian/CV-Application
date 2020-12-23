@@ -1,11 +1,14 @@
 import React from 'react'
-import { TextField } from '@material-ui/core'
+import { TextField, Typography, Button } from '@material-ui/core'
+import { ArrowForward } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 
 const PersonalDetails = ({values, handleChange}) => {
     return (
         <div>
-            <h1>Personal Details</h1>
+            <Typography variant="h4">
+                Personal Details
+            </Typography>
             <form autoComplete="off" onChange={handleChange}>
                 <TextField 
                     type="text"
@@ -48,8 +51,18 @@ const PersonalDetails = ({values, handleChange}) => {
                 <br />
                 <br />
             </form>
-            <Link to="/education">
-                <button>Next Page</button>
+            <Link 
+                to="/education"
+                style={{textDecoration: 'none'}}
+            >
+                <Button 
+                    variant="contained" 
+                    color="primary"
+                    endIcon={<ArrowForward />}
+                    
+                >
+                    Next Page
+                </Button>
             </Link>
         </div>
     )

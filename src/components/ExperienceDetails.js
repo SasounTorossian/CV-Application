@@ -1,5 +1,6 @@
 import React from 'react'
-import { TextField } from '@material-ui/core'
+import { TextField, Typography, Button } from '@material-ui/core'
+import {ArrowForward, ArrowBack, Add} from '@material-ui/icons';
 import { Link } from 'react-router-dom'
 
 const ExperienceDetails = ({values, handleChange, addExp}) => {
@@ -11,7 +12,9 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
 
     return (
         <div>
-            <h1>Experience Details</h1>
+            <Typography variant="h4">
+                Experience Details
+            </Typography>
             <form noValidate autoComplete="off" onChange={handleChange}>
                 {
                     values.experience.map((val, idx) => {
@@ -89,9 +92,42 @@ const ExperienceDetails = ({values, handleChange, addExp}) => {
                         )
                     })
                 }
-                <button onClick={addExperience}>Add new experience</button>
-                <Link to="/education"><button>Prev Page</button></Link>
-                <Link to="/confirm"><button>Next Page</button></Link>
+                <Button 
+                    onClick={addExperience}
+                    variant="contained" 
+                    color="primary"
+                    endIcon={<Add />}
+                >
+                    Add new education
+                </Button>
+
+                <br />
+                <br />  
+
+                <Link 
+                    to="/education"
+                    style={{textDecoration: 'none'}}
+                >
+                    <Button
+                        variant="contained" 
+                        color="primary"
+                        startIcon={<ArrowBack />}
+                    >
+                        Prev Page
+                    </Button>
+                </Link>
+                <Link 
+                    to="/confirm"
+                    style={{textDecoration: 'none'}}
+                >
+                    <Button
+                        variant="contained" 
+                        color="primary"
+                        endIcon={<ArrowForward />}
+                    >
+                        Next Page
+                    </Button>
+                </Link>
             </form>
         </div>
     )
