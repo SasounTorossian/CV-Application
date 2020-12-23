@@ -19,15 +19,15 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const Header = ({history}) => {
-    const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const classes = useStyles();
 
     const handleMenu = (event) => {
       setAnchorEl(event.currentTarget);
     };
   
     const handleMenuClick = (pageURL) => {
-      history.push(pageURL)
+      if(pageURL !== null) history.push(pageURL)
       setAnchorEl(null);
     };
 
