@@ -12,10 +12,6 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
-    input: {
-        // margin: "20px",
-        // padding: "20px"
-    }
 }));
 
 const PersonalDetails = ({values, handleChange}) => {
@@ -43,6 +39,7 @@ const PersonalDetails = ({values, handleChange}) => {
                     <form autoComplete="off" onChange={handleChange}>
                         <TextField 
                             className={classes.input}
+                            color="primary"
                             type="text"
                             label="Name" 
                             value={values.personal.name} 
