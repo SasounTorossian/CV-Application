@@ -91,13 +91,11 @@ class App extends Component {
     this.setState({ education: [...this.state.education, newEdu] })       
   }
 
-  removeEducation = (e) => {
-    let id = e.target.dataset.id
+  removeEducation = (index) => {
     let education = [...this.state.education]
-    education.splice(id, 1)
+    education.splice(index, 1)
     this.setState({ education: education })       
   }
-
 
   addExperience = () => {
     const newExp = {

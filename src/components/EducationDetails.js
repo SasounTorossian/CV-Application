@@ -36,9 +36,9 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
         addEdu(e)
     }
 
-    const removeEducation = (e) => { 
+    const removeEducation = (e, idx) => { 
         e.preventDefault() 
-        removeEdu(e)
+        removeEdu(idx)
     }
         
     return (
@@ -80,9 +80,9 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
 
                                             <Grid item xs={1}>
                                                 <IconButton
-                                                    onClick={removeEducation}
                                                     edge="start"
                                                     color="secondary"
+                                                    onClick={(e) => removeEducation(e, idx)}
                                                 >
                                                     <Delete/>
                                                 </IconButton>
