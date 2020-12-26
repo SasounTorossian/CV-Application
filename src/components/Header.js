@@ -9,14 +9,26 @@ import { makeStyles,
         MenuItem, 
         ListItemIcon  
       } from '@material-ui/core'
-import {Menu as MenuIcon, Person, School, Work} from '@material-ui/icons'
+import {Menu as MenuIcon, Person, School, Work, GitHub} from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
     },
-    menuButton: {
+    gitButton: {
       marginRight: theme.spacing(2),
+    },
+    menuIcon: {
+      fontSize: "1.6em"
+    },
+    gitIcon: {
+      fontSize: "1.3em"
+    },
+    scaleEfect: {
+      transition: "all 0.2s ease-in-out",
+      "&:hover": {
+        transform: "scale(1.1)"
+      }
     },
     title: {
       flexGrow: 1, 
@@ -43,19 +55,31 @@ const Header = ({history}) => {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
+                    <Typography variant="h5" className={classes.title}>
                         CV Assistant
                     </Typography>
 
                     <IconButton 
+                        className={`${classes.gitButton} ${classes.scaleEfect}`}
                         edge="start" 
-                        className={classes.menuButton}
+                        color="inherit" 
+                        aria-label="menu" 
+                        target="_blank"
+                        href="https://github.com/SasounTorossian"
+                    >
+                        <GitHub className={classes.gitIcon}/>
+                    </IconButton>
+
+                    <IconButton 
+                        className={classes.scaleEfect}
+                        edge="start" 
                         color="inherit" 
                         aria-label="menu" 
                         onClick={handleMenu}
                     >
-                        <MenuIcon />
+                        <MenuIcon className={classes.menuIcon}/>
                     </IconButton>
+
                     <Menu
                         id="simple-menu"
                         anchorEl={anchorEl}
