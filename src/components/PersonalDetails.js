@@ -7,11 +7,19 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
+    title: {
+        paddingTop: 20,
     },
+    centering: {
+        width: "100%",
+        align: "centre"
+    },
+    textField: {
+        width: "100%",
+    },
+    fullWidth: {
+        width: "100%"
+    }
 }));
 
 const PersonalDetails = ({values, handleChange}) => {
@@ -24,21 +32,21 @@ const PersonalDetails = ({values, handleChange}) => {
                 direction="column" 
                 alignItems="center" 
                 justify="center"
-                style={{ minHeight: '50vh' }}
+                style={{ 
+                    minHeight: '50vh' 
+                }}
             >
 
-                <br />
-                <br />
-
                 <Grid item xs={6}>
-                    <Typography variant="h4">
+                    <Typography variant="h4" className={classes.title}>
                         Personal Details
                     </Typography>
                 </Grid>
-                <Grid item xs={6}>
+
+                <Grid item xs={6} className={classes.centering}>
                     <form autoComplete="off" onChange={handleChange}>
                         <TextField 
-                            className={classes.input}
+                            className={classes.fullWidth}
                             color="primary"
                             type="text"
                             label="Name" 
@@ -52,7 +60,7 @@ const PersonalDetails = ({values, handleChange}) => {
                         <br />
 
                         <TextField 
-                            className={classes.input}
+                            className={classes.fullWidth}
                             type="email"
                             label="Email" 
                             value={values.personal.email} 
@@ -66,7 +74,7 @@ const PersonalDetails = ({values, handleChange}) => {
                         <br />
 
                         <TextField 
-                            className={classes.input}
+                            className={classes.fullWidth}
                             type="text"
                             label="Phone" 
                             name="phone"
@@ -80,7 +88,8 @@ const PersonalDetails = ({values, handleChange}) => {
                         <br />
                     </form>
                 </Grid>
-                <Grid item xs={6}>
+
+                <Grid item xs={6} className={classes.centering}>
                     <Link 
                         to="/education"
                         style={{textDecoration: 'none'}}
@@ -89,6 +98,7 @@ const PersonalDetails = ({values, handleChange}) => {
                             variant="contained" 
                             color="primary"
                             endIcon={<ArrowForward />}
+                            className={classes.fullWidth}
                         >
                             Next Page
                         </Button>

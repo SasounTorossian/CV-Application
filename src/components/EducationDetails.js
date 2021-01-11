@@ -7,25 +7,20 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
+    title: {
+        paddingTop: 20,
+    },
     rootCard: {
         marginTop: 10,
         marginBottom: 10,
     },
-    rootLink: {
-        minWidth: "100%"
-    },
-    link: {
-        minWidth: "400px"
+    centering: {
+        width: "100%",
+        align: "centre"
     },
     textField: {
-        width: "90%"
+        width: "90%",
     },
-    pos: {
-        marginBottom: 12,
-    },
-    linkButton: {
-        minWidth: "100%"
-    }
 }));
 
 const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
@@ -53,13 +48,13 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                     minHeight: '50vh' 
                 }}
             >
-                <Grid item xs={12} style={{width: "50%"}} align="center">
-                    <Typography variant="h4">
+                <Grid item xs={6}>
+                    <Typography variant="h4" className={classes.title}>
                         Education Details
                     </Typography>
                 </Grid>
 
-                <Grid item xs={12} style={{width: "50%"}} align="center">
+                <Grid item xs={6} className={classes.centering}>
                     <form noValidate autoComplete="off" onChange={handleChange}>
                         {
                             values.education.map((val, idx) => {
@@ -150,7 +145,7 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                     </form>
                 </Grid>
 
-                <Grid item xs={12} style={{width: "50%"}} align="center">
+                <Grid item xs={6} className={classes.centering}>
                     <Button
                             fullWidth={true}
                             onClick={addEducation}
@@ -162,8 +157,13 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                     </Button>
                 </Grid>
 
-                <Grid item xs={12} style={{width: "50%"}} align="center">
-                    <Grid container direction="row" justify="space-evenly">
+                <Grid item xs={6} className={classes.centering}>
+                    <Grid 
+                        container 
+                        direction="row" 
+                        justify="space-between"
+                        spacing={2} 
+                    >
                         <Grid item xs={6}>
                             <Link 
                                 to="/personal"
