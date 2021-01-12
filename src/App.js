@@ -113,6 +113,12 @@ class App extends Component {
     this.setState({ experience: [...this.state.experience, newExp] })       
   }
 
+  removeExperience = (index) => {
+    let experience = [...this.state.experience]
+    experience.splice(index, 1)
+    this.setState({ experience: experience })       
+  }
+
   //TODO: Grid sizing.
   // TODO: Backdrop dimmer for confirmation page.
   render() {
@@ -159,6 +165,7 @@ class App extends Component {
                   values={values}
                   handleChange = {this.handleChange}
                   addExp={this.addExperience}
+                  removeExp={this.removeExperience}
                 />
               )} 
             />

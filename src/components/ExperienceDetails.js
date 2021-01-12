@@ -1,133 +1,217 @@
 import React from 'react'
-import { TextField, Typography, Button } from '@material-ui/core'
-import {ArrowForward, ArrowBack, Add} from '@material-ui/icons';
+import { makeStyles, Grid, TextField, Typography, Button, IconButton, Card, CardContent } from '@material-ui/core'
+import {ArrowForward, ArrowBack, Add, Delete, BorderColor} from '@material-ui/icons';
 import { Link } from 'react-router-dom'
 
-const ExperienceDetails = ({values, handleChange, addExp}) => {
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    title: {
+        paddingTop: 20,
+    },
+    rootCard: {
+        marginTop: 10,
+        marginBottom: 10,
+    },
+    centering: {
+        width: "100%",
+        align: "centre"
+    },
+    textField: {
+        width: "90%",
+    },
+}));
+
+
+const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
+    const classes = useStyles();
+
     const addExperience = (e) => { 
         e.preventDefault() 
         addExp()
     }
 
+    const removeExperience = (e, idx) => { 
+        e.preventDefault() 
+        removeExp(idx)
+    }
+
     return (
-        <div>
-            <Typography variant="h4">
-                Experience Details
-            </Typography>
-            <form noValidate autoComplete="off" onChange={handleChange}>
-                {
-                    values.experience.map((val, idx) => {
-                        return (
-                            <div key={idx}>
-                                <TextField 
-                                    type="text"
-                                    label={`Company-${idx+1}`}
-                                    value={values.experience[idx].company} 
-                                    onBlur={handleChange}
-                                    inputProps={{ "data-id": idx, "data-field-type": "company" }}
-                                    error={!!values.experience[idx].companyError && values.experience[idx].companyError.length > 1}
-                                    helperText={values.experience[idx].companyError}
-                                />   
+        <div className={classes.root}>
+            <Grid 
+                container 
+                direction="column" 
+                alignItems="center" 
+                justify="center"
+                spacing={2} 
+                style={{ 
+                    minHeight: '50vh' 
+                }}
+            >
+                <Grid item xs={6}>
+                    <Typography variant="h4" className={classes.title}>
+                        Experience Details
+                    </Typography>
+                </Grid>
 
-                                <br />
-                                <br />
+                <Grid item xs={6} className={classes.centering}>
+                    <form noValidate autoComplete="off" onChange={handleChange}>
+                        {
+                            values.experience.map((val, idx) => {
+                                return (
+                                    <Card className={classes.rootCard} key={idx}>
+                                        <CardContent>
+                                        <Grid 
+                                            container 
+                                            spacing={2} 
+                                            alignItems="center"
+                                            style={{ minHeight: "30vh" }}
+                                        >
 
-                                <TextField 
-                                    type="text"
-                                    label={`Role-${idx+1}`}
-                                    value={values.experience[idx].role} 
-                                    onBlur={handleChange}
-                                    inputProps={{ "data-id": idx, "data-field-type": "role" }}
-                                    error={!!values.experience[idx].roleError && values.experience[idx].roleError.length > 1}
-                                    helperText={values.experience[idx].roleError}
-                                />   
+                                            <Grid item xs={11} >
+                                                <Typography variant="h5" align="center">
+                                                    {`Company ${idx+1}`}
+                                                </Typography>
+                                            </Grid>
 
-                                <br />
-                                <br /> 
+                                            
+                                            <Grid item xs={1}>
+                                                    <IconButton
+                                                        edge="start"
+                                                        color="secondary"
+                                                        onClick={(e) => removeExperience(e, idx)}
+                                                    >
+                                                        <Delete/>
+                                                    </IconButton>
+                                            </Grid>
 
-                                <TextField 
-                                    type="date"
-                                    label={`Start Date-${idx+1}`}
-                                    value={values.experience[idx].startDateExp} 
-                                    onBlur={handleChange}
-                                    inputProps={{ "data-id": idx, "data-field-type": "startDateExp" }}
-                                    InputLabelProps={{ shrink: true }}
-                                    error={!!values.experience[idx].startDateExpError && values.experience[idx].startDateExpError.length > 1}
-                                    helperText={values.experience[idx].startDateExpError}
-                                />   
+                                            <Grid item xs={6}>    
+                                                <TextField 
+                                                className={classes.textField}
+                                                type="text"
+                                                label={`Company-${idx+1}`}
+                                                value={values.experience[idx].company} 
+                                                onBlur={handleChange}
+                                                inputProps={{ "data-id": idx, "data-field-type": "company" }}
+                                                error={!!values.experience[idx].companyError && values.experience[idx].companyError.length > 1}
+                                                helperText={values.experience[idx].companyError}
+                                                />   
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <TextField 
+                                                className={classes.textField}
+                                                    type="text"
+                                                    label={`Role-${idx+1}`}
+                                                    value={values.experience[idx].role} 
+                                                    onBlur={handleChange}
+                                                    inputProps={{ "data-id": idx, "data-field-type": "role" }}
+                                                    error={!!values.experience[idx].roleError && values.experience[idx].roleError.length > 1}
+                                                    helperText={values.experience[idx].roleError}
+                                                />   
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <TextField 
+                                                    className={classes.textField}
+                                                    type="date"
+                                                    label={`Start Date-${idx+1}`}
+                                                    value={values.experience[idx].startDateExp} 
+                                                    onBlur={handleChange}
+                                                    inputProps={{ "data-id": idx, "data-field-type": "startDateExp" }}
+                                                    InputLabelProps={{ shrink: true }}
+                                                    error={!!values.experience[idx].startDateExpError && values.experience[idx].startDateExpError.length > 1}
+                                                    helperText={values.experience[idx].startDateExpError}
+                                                />   
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                <TextField 
+                                                    className={classes.textField}
+                                                    type="date"
+                                                    label={`End Date-${idx+1}`}
+                                                    value={values.experience[idx].endDateExp} 
+                                                    onBlur={handleChange}
+                                                    inputProps={{ "data-id": idx, "data-field-type": "endDateExp" }}
+                                                    InputLabelProps={{ shrink: true }}
+                                                    error={!!values.experience[idx].endDateExpError && values.experience[idx].endDateExpError.length > 1}
+                                                    helperText={values.experience[idx].endDateExpError}
+                                                />   
+                                            </Grid>
+                                            <Grid item xs={12}>
+                                                <TextField 
+                                                    className={classes.textField}
+                                                    type="text"
+                                                    label={`Details of job-${idx+1}`}
+                                                    value={values.experience[idx].details} 
+                                                    onBlur={handleChange}
+                                                    inputProps={{ "data-id": idx, "data-field-type": "details" }}
+                                                    multiline
+                                                    rows={5}
+                                                    error={!!values.experience[idx].detailsError && values.experience[idx].detailsError.length > 1}
+                                                    helperText={values.experience[idx].detailsError}
+                                                />   
+                                            </Grid>
+                                        </Grid>
+                                        </CardContent>
+                                    </Card> 
+                                )
+                            })
+                        }
+                    </form>
+                </Grid>
 
-                                <br />
-                                <br /> 
-
-                                <TextField 
-                                    type="date"
-                                    label={`End Date-${idx+1}`}
-                                    value={values.experience[idx].endDateExp} 
-                                    onBlur={handleChange}
-                                    inputProps={{ "data-id": idx, "data-field-type": "endDateExp" }}
-                                    InputLabelProps={{ shrink: true }}
-                                    error={!!values.experience[idx].endDateExpError && values.experience[idx].endDateExpError.length > 1}
-                                    helperText={values.experience[idx].endDateExpError}
-                                />   
-
-                                <br />
-                                <br />   
-
-                                <TextField 
-                                    type="text"
-                                    label={`Details of job-${idx+1}`}
-                                    value={values.experience[idx].details} 
-                                    onBlur={handleChange}
-                                    inputProps={{ "data-id": idx, "data-field-type": "details" }}
-                                    multiline
-                                    rows={5}
-                                    error={!!values.experience[idx].detailsError && values.experience[idx].detailsError.length > 1}
-                                    helperText={values.experience[idx].detailsError}
-                                />   
-
-                                <br />
-                                <br />   
-                            </div>
-                        )
-                    })
-                }
-                <Button 
-                    onClick={addExperience}
-                    variant="contained" 
-                    color="primary"
-                    endIcon={<Add />}
-                >
-                    Add new education
-                </Button>
-
-                <br />
-                <br />  
-
-                <Link 
-                    to="/education"
-                    style={{textDecoration: 'none'}}
-                >
-                    <Button
-                        variant="contained" 
-                        color="primary"
-                        startIcon={<ArrowBack />}
-                    >
-                        Prev Page
+                <Grid item xs={6} className={classes.centering}>
+                    <Button 
+                            fullWidth={true}
+                            onClick={addExperience}
+                            variant="contained" 
+                            color="primary"
+                            endIcon={<Add />}
+                        >
+                            Add new experience
                     </Button>
-                </Link>
-                <Link 
-                    to="/confirm"
-                    style={{textDecoration: 'none'}}
-                >
-                    <Button
-                        variant="contained" 
-                        color="primary"
-                        endIcon={<ArrowForward />}
+                </Grid>
+
+                <Grid item xs={6} className={classes.centering}>
+                    <Grid 
+                        container 
+                        direction="row" 
+                        justify="space-between"
+                        spacing={2} 
                     >
-                        Next Page
-                    </Button>
-                </Link>
-            </form>
+                        <Grid item xs={6}>
+                            <Link 
+                                to="/education"
+                                style={{textDecoration: 'none'}}
+                            >
+                                <Button
+                                    fullWidth={true}
+                                    variant="contained" 
+                                    color="primary"
+                                    startIcon={<ArrowBack />}
+                                >
+                                    Prev Page
+                                </Button>
+                            </Link>
+                        </Grid>
+
+                        <Grid item xs={6}>
+                            <Link 
+                                to="/confirm"
+                                style={{textDecoration: 'none'}}
+                            >
+                                <Button
+                                    fullWidth={true}
+                                    variant="contained" 
+                                    color="primary"
+                                    endIcon={<ArrowForward />}
+                                >
+                                    Next Page
+                                </Button>
+                            </Link>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
         </div>
     )
 } 
