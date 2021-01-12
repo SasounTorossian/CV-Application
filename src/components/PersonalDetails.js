@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     title: {
-        paddingTop: 20,
+        marginTop: "30px",
     },
     centering: {
         width: "100%",
@@ -31,14 +31,13 @@ const PersonalDetails = ({values, handleChange}) => {
                 container spacing={3} 
                 direction="column" 
                 alignItems="center" 
-                justify="center"
                 style={{ 
                     minHeight: '50vh' 
                 }}
             >
 
-                <Grid item xs={6}>
-                    <Typography variant="h4" className={classes.title}>
+                <Grid item xs={6} className={classes.title}>
+                    <Typography variant="h4">
                         Personal Details
                     </Typography>
                 </Grid>

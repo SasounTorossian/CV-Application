@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     title: {
-        paddingTop: 20,
+        marginTop: "30px",
     },
     rootCard: {
         marginTop: 10,
@@ -42,14 +42,13 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                 container 
                 direction="column" 
                 alignItems="center" 
-                justify="center"
                 spacing={2} 
                 style={{ 
                     minHeight: '50vh' 
                 }}
             >
-                <Grid item xs={6}>
-                    <Typography variant="h4" className={classes.title}>
+                <Grid item xs={6} className={classes.title}>
+                    <Typography variant="h4" >
                         Education Details
                     </Typography>
                 </Grid>
@@ -65,6 +64,8 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                                             container 
                                             spacing={2} 
                                             alignItems="center"
+                                            align="center"
+                                            justify="center"
                                             style={{ minHeight: "30vh" }}
                                         >
                                             <Grid item xs={11} >

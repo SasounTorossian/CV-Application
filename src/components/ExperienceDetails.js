@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     title: {
-        paddingTop: 20,
+        marginTop: "30px",
     },
     rootCard: {
         marginTop: 10,
@@ -21,8 +21,10 @@ const useStyles = makeStyles((theme) => ({
     textField: {
         width: "90%",
     },
+    textFieldMultiline: {
+        width: "95%",
+    },
 }));
-
 
 const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
     const classes = useStyles();
@@ -43,14 +45,13 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                 container 
                 direction="column" 
                 alignItems="center" 
-                justify="center"
                 spacing={2} 
                 style={{ 
                     minHeight: '50vh' 
                 }}
             >
-                <Grid item xs={6}>
-                    <Typography variant="h4" className={classes.title}>
+                <Grid item xs={6} className={classes.title}>
+                    <Typography variant="h4" >
                         Experience Details
                     </Typography>
                 </Grid>
@@ -66,6 +67,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                             container 
                                             spacing={2} 
                                             alignItems="center"
+                                            align="center"
                                             style={{ minHeight: "30vh" }}
                                         >
 
@@ -98,6 +100,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                 helperText={values.experience[idx].companyError}
                                                 />   
                                             </Grid>
+
                                             <Grid item xs={6}>
                                                 <TextField 
                                                 className={classes.textField}
@@ -110,6 +113,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                     helperText={values.experience[idx].roleError}
                                                 />   
                                             </Grid>
+
                                             <Grid item xs={6}>
                                                 <TextField 
                                                     className={classes.textField}
@@ -123,6 +127,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                     helperText={values.experience[idx].startDateExpError}
                                                 />   
                                             </Grid>
+
                                             <Grid item xs={6}>
                                                 <TextField 
                                                     className={classes.textField}
@@ -136,15 +141,17 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                     helperText={values.experience[idx].endDateExpError}
                                                 />   
                                             </Grid>
+                                            
                                             <Grid item xs={12}>
                                                 <TextField 
-                                                    className={classes.textField}
+                                                    className={classes.textFieldMultiline}
                                                     type="text"
                                                     label={`Details of job-${idx+1}`}
                                                     value={values.experience[idx].details} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "details" }}
                                                     multiline
+                                                    margin="none"
                                                     rows={5}
                                                     error={!!values.experience[idx].detailsError && values.experience[idx].detailsError.length > 1}
                                                     helperText={values.experience[idx].detailsError}
