@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PersonalDetails from "./components/PersonalDetails"
 import EducationDetails from "./components/EducationDetails"
 import ExperienceDetails from "./components/ExperienceDetails"
+import Introduction from "./components/Introduction"
 import Header from "./components/Header"
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
@@ -119,7 +120,6 @@ class App extends Component {
     this.setState({ experience: experience })       
   }
 
-  //TODO: Grid sizing.
   // TODO: Backdrop dimmer for confirmation page.
   render() {
     const {personal, education, experience} = this.state
@@ -133,6 +133,16 @@ class App extends Component {
           />
 
           <Switch>
+            <Route
+                path = "/introduction" 
+                render={(props) => (
+                  <Introduction 
+                    {...props} 
+                    handleChange={this.handleChange} 
+                  />
+                )} 
+            />
+
             <Route
               path = "/personal" 
               render={(props) => (

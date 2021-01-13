@@ -9,7 +9,7 @@ import { makeStyles,
         MenuItem, 
         ListItemIcon  
       } from '@material-ui/core'
-import {Menu as MenuIcon, Person, School, Work, GitHub} from '@material-ui/icons'
+import {Menu as MenuIcon, Info, Person, School, Work, GitHub} from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,8 +49,6 @@ const Header = ({history}) => {
       setAnchorEl(null);
     };
 
-    //TODO: Figure out work icon
-    //TODO: Figure out github link
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -88,6 +86,14 @@ const Header = ({history}) => {
                         onClose={() => handleMenuClick(null)}
                     >
 
+                        <MenuItem 
+                          onClick={() => handleMenuClick("/introduction")}
+                        >
+                          <ListItemIcon>
+                            <Info />
+                          </ListItemIcon>
+                          <Typography>Introduction</Typography>
+                        </MenuItem>
                             
                         <MenuItem 
                           onClick={() => handleMenuClick("/personal")}

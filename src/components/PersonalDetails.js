@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, Grid, TextField, Typography, Button } from '@material-ui/core'
-import { ArrowForward } from '@material-ui/icons'
+import { ArrowForward, ArrowBack } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+// TODO: Get rid of <br>
 const PersonalDetails = ({values, handleChange}) => {
     const classes = useStyles();
 
@@ -56,8 +57,6 @@ const PersonalDetails = ({values, handleChange}) => {
                             helperText={values.personal.nameError}
                         />
 
-                        <br />
-
                         <TextField 
                             className={classes.fullWidth}
                             type="email"
@@ -68,9 +67,6 @@ const PersonalDetails = ({values, handleChange}) => {
                             error={!!values.personal.emailError && values.personal.emailError.length > 1}
                             helperText={values.personal.emailError}
                         />
-
-
-                        <br />
 
                         <TextField 
                             className={classes.fullWidth}
@@ -84,25 +80,50 @@ const PersonalDetails = ({values, handleChange}) => {
                             helperText={values.personal.phoneError}
                         />
                     
-                        <br />
                     </form>
                 </Grid>
 
                 <Grid item xs={6} className={classes.centering}>
-                    <Link 
-                        to="/education"
-                        style={{textDecoration: 'none'}}
+                    <Grid 
+                        container 
+                        direction="row" 
+                        justify="space-between"
+                        spacing={2} 
                     >
-                        <Button 
-                            variant="contained" 
-                            color="primary"
-                            endIcon={<ArrowForward />}
-                            className={classes.fullWidth}
-                        >
-                            Next Page
-                        </Button>
-                    </Link>
+                        <Grid item xs={6}>
+                            <Link 
+                                to="/introduction"
+                                style={{textDecoration: 'none'}}
+                            >
+                                <Button
+                                    fullWidth={true}
+                                    variant="contained" 
+                                    color="primary"
+                                    startIcon={<ArrowBack />}
+                                >
+                                    Prev Page
+                                </Button>
+                            </Link>
+                        </Grid>
+
+                        <Grid item xs={6}>
+                            <Link 
+                                to="/education"
+                                style={{textDecoration: 'none'}}
+                            >
+                                <Button
+                                    fullWidth={true}
+                                    variant="contained" 
+                                    color="primary"
+                                    endIcon={<ArrowForward />}
+                                >
+                                    Next Page
+                                </Button>
+                            </Link>
+                        </Grid>
+                    </Grid>
                 </Grid>
+
             </Grid>
         </div>
     )
