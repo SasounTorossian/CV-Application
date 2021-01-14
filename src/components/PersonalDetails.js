@@ -79,7 +79,7 @@ const PersonalDetails = ({values, handleChange}) => {
                             error={!!values.personal.phoneError && values.personal.phoneError.length > 1}
                             helperText={values.personal.phoneError}
                         />
-                    
+
                     </form>
                 </Grid>
 

@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
+import Introduction from "./components/Introduction"
 import PersonalDetails from "./components/PersonalDetails"
 import EducationDetails from "./components/EducationDetails"
 import ExperienceDetails from "./components/ExperienceDetails"
-import Introduction from "./components/Introduction"
+import ConfirmDetails from "./components/ConfirmDetails"
 import Header from "./components/Header"
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
@@ -57,7 +58,7 @@ class App extends Component {
     let field = e.target.dataset.fieldType
     let id = e.target.dataset.id
     let value = e.target.value
-
+    
     if(["name", "email", "phone"].includes(field)) {
       let personal = {...this.state.personal}
       personal[field] = value
@@ -176,6 +177,16 @@ class App extends Component {
                   handleChange = {this.handleChange}
                   addExp={this.addExperience}
                   removeExp={this.removeExperience}
+                />
+              )} 
+            />
+
+            <Route
+              path = "/confirm" 
+              render={(props) => (
+                <ConfirmDetails 
+                  {...props} 
+                  values={values}
                 />
               )} 
             />

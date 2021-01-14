@@ -9,7 +9,7 @@ import { makeStyles,
         MenuItem, 
         ListItemIcon  
       } from '@material-ui/core'
-import {Menu as MenuIcon, Info, Person, School, Work, GitHub} from '@material-ui/icons'
+import {Menu as MenuIcon, Info, Person, School, Work, Pageview, GitHub} from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -120,6 +120,15 @@ const Header = ({history}) => {
                             <Work />
                           </ListItemIcon>
                           <Typography>Experience</Typography>
+                        </MenuItem>
+
+                        <MenuItem 
+                          onClick={() => handleMenuClick("/confirm")}
+                        >
+                          <ListItemIcon>
+                            <Pageview />
+                          </ListItemIcon>
+                          <Typography>Confirm</Typography>
                         </MenuItem>
                     </Menu>
                 </Toolbar>
