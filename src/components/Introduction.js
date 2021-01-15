@@ -14,12 +14,9 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         align: "centre"
     },
-    textField: {
-        width: "100%",
+    customFont: {
+        fontSize: 20
     },
-    fullWidth: {
-        width: "100%"
-    }
 }));
 
 const Introduction = ({values, handleChange}) => {
@@ -43,14 +40,18 @@ const Introduction = ({values, handleChange}) => {
                 </Grid>
                 
                 <Grid item xs={6}>
-                    <Typography variant="h5">
-                        Welcome to the CV Assistant, 
-                        created by Sasoun Torossian. 
-                        Please go through the assistant and fill out 
-                        all the necessary details. You can go back or forward 
-                        at any time using the below arrow keys, or the menu button in the
-                        top right. Your progress will be saved when jumping 
-                        between pages.
+                    <Typography variant="body1" gutterBottom={true} className={classes.customFont}>
+                        Welcome to the CV Assistant, created by Sasoun Torossian based off the Odin project curriculum. 
+                        This assistant is made primarily made using React and Material UI, with some additional libraries
+                        included to streamline the experience.
+                    </Typography>
+                    <Typography variant="body1" gutterBottom={true} className={classes.customFont}>
+                        Please go through the assistant and fill out all the necessary details. 
+                    </Typography>
+                    <Typography variant="body1" className={classes.customFont}>
+                        You can go back or forward at any time using the below arrow keys, or the menu button in the
+                        top right. Your progress will be saved when jumping between pages, and you will be able to see
+                        an overview of your progress on the final confirmation page.
                     </Typography>
                 </Grid>
 
@@ -63,7 +64,7 @@ const Introduction = ({values, handleChange}) => {
                             variant="contained" 
                             color="primary"
                             endIcon={<ArrowForward />}
-                            className={classes.fullWidth}
+                            fullWidth={true}
                         >
                             Next Page
                         </Button>
