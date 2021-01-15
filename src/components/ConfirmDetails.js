@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
 const ConfirmDetails = ({values}) => {
     const classes = useStyles();
 
-    //TODO: forEach cannot terminate early. Need something else.
     // Used to cycle through state object of parent in order to determine all necessary fields are filled.
-    const validValues = () => {
+    const invalidValues = () => {
+        let invalid = false // Initates variable to be valid at first.
         let objectKeys = Object.keys(values) // Extract keys: personal, education, experience
         objectKeys.forEach(key => {
             if(Array.isArray(values[key])){ // Separates personal (not array), with education and experience (arrays)
@@ -36,9 +36,8 @@ const ConfirmDetails = ({values}) => {
                     for(const [key, value] of objectEntries) { // Destructures key:value into separate variables
                         if(["school", "course", "startDateEdu", "endDateEdu"].includes(key) ||
                             ["company", "role", "startDateExp", "endDateExp", "details"].includes(key)) { // Only checks the values of these keys
-                            if(!value) { // If value of above keys are empty, return false
-                                console.log("FALSE");
-                                return false 
+                            if(!value) { // If value of above keys are empty, return true
+                                invalid = true
                             }
                         }
                     }
@@ -48,17 +47,15 @@ const ConfirmDetails = ({values}) => {
                 let objectEntries = Object.entries(values[key]) // Array of arrays containing key:value pair as first and second element. [ [2], [2], ......]
                 for(const [key, value] of objectEntries) { // Destructures key:value into separate variables
                     if(["name", "email", "phone"].includes(key)) { // Only checks the values of these keys
-                        if(!value) { // If value of above keys are empty, return false
-                            console.log("FALSE");
-                            return false        
+                        if(!value) { // If value of above keys are empty, return true
+                            invalid = true        
                         }
                     }
                 }
             }
         })
 
-        console.log("TRUE");
-        return true
+        return invalid
     }
 
     const isValid = (value) => { return value ? value : "Required" }
@@ -248,7 +245,7 @@ const ConfirmDetails = ({values}) => {
                                     fullWidth={true}
                                     variant="contained" 
                                     color="primary"
-                                    disabled={validValues()}
+                                    disabled={invalidValues()}
                                     endIcon={<ArrowForward />}
                                 >
                                     Next Page
