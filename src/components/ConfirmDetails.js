@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Grid, Typography, Button } from '@material-ui/core'
+import { makeStyles, Grid, Typography, Button, Divider } from '@material-ui/core'
 import { ArrowForward, ArrowBack } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 
@@ -20,12 +20,16 @@ const useStyles = makeStyles((theme) => ({
     fullWidth: {
         width: "100%"
     },
+    boldField: {
+        fontSize: 19,
+        fontWeight: 600
+    },
     normal: {
-        fontSize: 20
+        fontSize: 19
     },
     error: {
-        fontWeight: 600,
-        fontSize: 20,
+        // fontWeight: 600,
+        fontSize: 19,
         color: "red"
     }
 }));
@@ -70,15 +74,15 @@ const ConfirmDetails = ({values}) => {
 
     const isValidStyle = (value) => { return value ? classes.normal : classes.error }
 
+    const isValidDisplay = (value) => { return value ? "initial" : "inline" }
+
     return (
         <div className={classes.root}>
             <Grid 
-                container spacing={3} 
+                container 
+                spacing={2} 
                 direction="column" 
                 alignItems="center" 
-                style={{ 
-                    minHeight: '50vh' 
-                }}
             >
 
                 <Grid item xs={6} className={classes.title}>
@@ -92,134 +96,195 @@ const ConfirmDetails = ({values}) => {
                         container 
                         direction="row" 
                         justify="space-between"
-                        spacing={2} 
+                        align="left"
+                        spacing={3} 
                     >
 
-                        <Grid 
-                            container 
-                            direction="row" 
-                            justify="flex-start"
-                            spacing={2} 
-                        >   
-                            <Grid item xs={12}>
-                                <Typography variant="h5">
-                                    Personal
-                                </Typography>
-                            </Grid>
+                        <Grid item xs={12}>
+                            <Grid 
+                                container 
+                                direction="row" 
+                                justify="flex-start"
+                                spacing={1} 
+                            >   
+                                <Grid item xs={12}>
+                                    <Typography variant="h5">
+                                        Personal
+                                    </Typography>
+                                </Grid>
 
-                            <Grid item xs={6}>
-                                <Typography variant="body1" className={isValidStyle(values.personal.name)} >
-                                    {`Name: ${isValidText(values.personal.name)}`}
-                                </Typography>
-                            </Grid>
+                                <Grid item xs={12}>
+                                    <Divider variant="fullWidth" />
+                                </Grid>
 
-                            <Grid item xs={6}>
-                                <Typography variant="body1" className={isValidStyle(values.personal.email)}>
-                                    {`Email: ${isValidText(values.personal.email)}`}
-                                </Typography>
-                            </Grid>
+                                <Grid item xs={6}>
+                                    <Typography variant="body1" display="inline" className={classes.boldField}>
+                                        {`Name: `}
+                                    </Typography>
+                                    <Typography variant="body1" display="inline" className={isValidStyle(values.personal.name)} >
+                                        {isValidText(values.personal.name)}
+                                    </Typography>
+                                </Grid>
 
-                            <Grid item xs={6}>
-                                <Typography variant="body1" className={isValidStyle(values.personal.phone)}>
-                                    {`Phone: ${isValidText(values.personal.phone)}`}
-                                </Typography>
+                                <Grid item xs={6}>
+                                    <Typography variant="body1" display="inline" className={classes.boldField}>
+                                        {`Email: `}
+                                    </Typography>
+                                    <Typography variant="body1" display="inline" className={isValidStyle(values.personal.email)}>
+                                        {isValidText(values.personal.email)}
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item xs={6}>
+                                    <Typography variant="body1" display="inline" className={classes.boldField}>
+                                        {`Phone: `}
+                                    </Typography>
+                                    <Typography variant="body1" display="inline" className={isValidStyle(values.personal.phone)}>
+                                        {isValidText(values.personal.phone)}
+                                    </Typography>
+                                </Grid>
+
+
                             </Grid>
                         </Grid>
 
-                        {
-                            values.education.map((val, idx) => {
-                                return (
-                                    <Grid 
-                                        container 
-                                        direction="row" 
-                                        justify="flex-start"
-                                        spacing={2} 
-                                        key={idx}
-                                    >   
-                                        <Grid item xs={12}>
-                                            <Typography variant="h5">
-                                                {`Education ${idx+1}`}
-                                            </Typography>
-                                        </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Typography variant="body1" className={isValidStyle(val.school)}>
-                                                {`School ${idx+1}: ${isValidText(val.school)}`}
-                                            </Typography>
-                                        </Grid>
+                        <Grid item xs={12}>
+                            {
+                                values.education.map((val, idx) => {
+                                    return (
+                                        <Grid 
+                                            container 
+                                            direction="row" 
+                                            justify="flex-start"
+                                            spacing={1} 
+                                            key={idx}
+                                        >   
+                                            <Grid item xs={12}>
+                                                <Typography variant="h5">
+                                                    {`Education ${idx+1}`}
+                                                </Typography>
+                                            </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Typography variant="body1" className={isValidStyle(val.course)}>
-                                                {`Course ${idx+1}: ${isValidText(val.course)}`}
-                                            </Typography>
-                                        </Grid>
+                                            <Grid item xs={12}>
+                                                <Divider variant="fullWidth" />
+                                            </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Typography variant="body1" className={isValidStyle(val.startDateEdu)}>
-                                                {`Start Date ${idx+1}: ${isValidText(val.startDateEdu)}`}
-                                            </Typography>
-                                        </Grid>
+                                            <Grid item xs={6}>
+                                                <Typography variant="body1" display="inline" className={classes.boldField}>
+                                                    {`School ${idx+1}: `}
+                                                </Typography>
+                                                <Typography variant="body1" display="inline" className={isValidStyle(val.school)}>
+                                                    {isValidText(val.school)}
+                                                </Typography>
+                                            </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Typography variant="body1" className={isValidStyle(val.endDateEdu)}>
-                                                {`End Date ${idx+1}: ${isValidText(val.endDateEdu)}`}
-                                            </Typography>
-                                        </Grid>
-                                    </Grid>
-                                )
-                            })
-                        }
+                                            <Grid item xs={6}>
+                                                <Typography variant="body1" display="inline" className={classes.boldField}>
+                                                    {`Course ${idx+1}: `}
+                                                </Typography>
+                                                <Typography variant="body1" display="inline" className={isValidStyle(val.course)}>
+                                                    {isValidText(val.course)}
+                                                </Typography>
+                                            </Grid>
 
-                        {
-                            values.experience.map((val, idx) => {
-                                return (
-                                    <Grid 
-                                        container 
-                                        direction="row" 
-                                        justify="flex-start"
-                                        spacing={2} 
-                                        key={idx}
-                                    >   
-                                        <Grid item xs={12}>
-                                            <Typography variant="h5">
-                                                {`Experience ${idx+1}`}
-                                            </Typography>
-                                        </Grid>
+                                            <Grid item xs={6}>
+                                                <Typography variant="body1" display="inline" className={classes.boldField}>
+                                                    {`Start Date ${idx+1}: `}
+                                                </Typography>
+                                                <Typography variant="body1" display="inline" className={isValidStyle(val.startDateEdu)}>
+                                                    {isValidText(val.startDateEdu)}
+                                                </Typography>
+                                            </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Typography variant="body1" className={isValidStyle(val.company)}>
-                                                {`Company ${idx+1}: ${isValidText(val.company)}`}
-                                            </Typography>
-                                        </Grid>
+                                            <Grid item xs={6}>
+                                                <Typography variant="body1" display="inline" className={classes.boldField}>
+                                                    {`End Date ${idx+1}: `}
+                                                </Typography>
+                                                <Typography variant="body1" display="inline" className={isValidStyle(val.endDateEdu)}>
+                                                    {isValidText(val.endDateEdu)}
+                                                </Typography>
+                                            </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Typography variant="body1" className={isValidStyle(val.role)}>
-                                                {`Role ${idx+1}: ${isValidText(val.role)}`}
-                                            </Typography>
-                                        </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Typography variant="body1" className={isValidStyle(val.startDateExp)}>
-                                                {`Start Date ${idx+1}: ${isValidText(val.startDateExp)}`}
-                                            </Typography>
                                         </Grid>
+                                    )
+                                })
+                            }
+                        </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Typography variant="body1" className={isValidStyle(val.endDateExp)}>
-                                                {`End Date ${idx+1}: ${isValidText(val.endDateExp)}`}
-                                            </Typography>
+                        <Grid item xs={12}>
+                            {
+                                values.experience.map((val, idx) => {
+                                    return (
+                                        <Grid 
+                                            container 
+                                            direction="row" 
+                                            justify="flex-start"
+                                            spacing={1} 
+                                            key={idx}
+                                        >   
+                                            <Grid item xs={12}>
+                                                <Typography variant="h5">
+                                                    {`Experience ${idx+1}`}
+                                                </Typography>
+                                            </Grid>
+
+                                            <Grid item xs={12}>
+                                                <Divider variant="fullWidth" />
+                                            </Grid>
+
+                                            <Grid item xs={6}>
+                                                <Typography variant="body1" display="inline" className={classes.boldField}>
+                                                    {`Company ${idx+1}: `}
+                                                </Typography>
+                                                <Typography variant="body1" display="inline" className={isValidStyle(val.company)}>
+                                                    {isValidText(val.company)}
+                                                </Typography>
+                                            </Grid>
+
+                                            <Grid item xs={6}>
+                                                <Typography variant="body1" display="inline" className={classes.boldField}>
+                                                    {`Role ${idx+1}: `}
+                                                </Typography>
+                                                <Typography variant="body1" display="inline" className={isValidStyle(val.role)}>
+                                                    {isValidText(val.role)}
+                                                </Typography>
+                                            </Grid>
+
+                                            <Grid item xs={6}>
+                                                <Typography variant="body1" display="inline" className={classes.boldField}>
+                                                    {`Start Date ${idx+1}: `}
+                                                </Typography>
+                                                <Typography variant="body1" display="inline" className={isValidStyle(val.startDateExp)}>
+                                                    {isValidText(val.startDateExp)}
+                                                </Typography>
+                                            </Grid>
+
+                                            <Grid item xs={6}>
+                                                <Typography variant="body1" display="inline" className={classes.boldField}>
+                                                    {`End Date ${idx+1}: `}
+                                                </Typography>
+                                                <Typography variant="body1" display="inline" className={isValidStyle(val.endDateExp)}>
+                                                    {isValidText(val.endDateExp)}
+                                                </Typography>
+                                            </Grid>
+
+                                            <Grid item xs={12}>
+                                                <Typography variant="body1" display="inline" className={classes.boldField}>
+                                                    {`Details ${idx+1}: `}
+                                                </Typography>
+                                                <Typography variant="body1" paragraph={true} display={isValidDisplay(val.details)} className={isValidStyle(val.details)}>
+                                                    {isValidText(val.details)}
+                                                </Typography>
+                                            </Grid>
+
+
                                         </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Typography variant="body1" className={isValidStyle(val.details)}>
-                                                {`Details ${idx+1}: ${isValidText(val.details)}`}
-                                            </Typography>
-                                        </Grid>
-                                    </Grid>
-                                )
-                            })
-                        }
-
+                                    )
+                                })
+                            }
+                        </Grid>
                     </Grid>
                 </Grid>
 
