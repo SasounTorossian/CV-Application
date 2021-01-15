@@ -133,6 +133,17 @@ class App extends Component {
             component={Header}
           />
 
+          <Route
+              exact path = "/" 
+              render={(props) => (
+                <Introduction 
+                  {...props} 
+                  handleChange={this.handleChange} 
+                />
+              )} 
+            />  
+
+
           <Switch>
             <Route
                 path = "/introduction" 
