@@ -48,7 +48,7 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                 }}
             >
                 <Grid item xs={6} className={classes.title}>
-                    <Typography variant="h4" >
+                    <Typography variant="h4">
                         Education Details
                     </Typography>
                 </Grid>
@@ -58,7 +58,7 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                         {
                             values.education.map((val, idx) => {
                                 return (
-                                    <Card className={classes.rootCard} key={idx}>
+                                    <Card className={classes.rootCard} raised={true} key={idx}>
                                         <CardContent>
                                         <Grid 
                                             container 
@@ -69,8 +69,8 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                                             style={{ minHeight: "30vh" }}
                                         >
                                             <Grid item xs={11} >
-                                                <Typography variant="h5" align="center">
-                                                    {`School ${idx+1}`}
+                                                <Typography variant="h5">
+                                                    {`Education ${idx+1}`}
                                                 </Typography>
                                             </Grid>
 
@@ -88,7 +88,7 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                                                 <TextField 
                                                     className={classes.textField}
                                                     type="text"
-                                                    label={`School-${idx+1}`}
+                                                    label={`School ${idx+1}`}
                                                     value={val.school} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "school" }}
@@ -101,7 +101,7 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                                                 <TextField 
                                                     className={classes.textField}
                                                     type="text"
-                                                    label={`Course-${idx+1}`}
+                                                    label={`Course ${idx+1}`}
                                                     value={val.course} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "course" }}
@@ -114,7 +114,7 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                                                 <TextField 
                                                     className={classes.textField}
                                                     type="date"
-                                                    label={`Start Date-${idx+1}`}
+                                                    label={`Start Date ${idx+1}`}
                                                     value={val.startDateEdu} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "startDateEdu" }}
@@ -128,7 +128,7 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                                                 <TextField 
                                                     className={classes.textField}
                                                     type="date"
-                                                    label={`End Date-${idx+1}`}
+                                                    label={`End Date ${idx+1}`}
                                                     value={val.endDateEdu}
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "endDateEdu" }}

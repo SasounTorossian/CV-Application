@@ -61,7 +61,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                         {
                             values.experience.map((val, idx) => {
                                 return (
-                                    <Card className={classes.rootCard} key={idx}>
+                                    <Card className={classes.rootCard} raised={true} key={idx}>
                                         <CardContent>
                                         <Grid 
                                             container 
@@ -73,7 +73,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
 
                                             <Grid item xs={11} >
                                                 <Typography variant="h5" align="center">
-                                                    {`Company ${idx+1}`}
+                                                    {`Experience ${idx+1}`}
                                                 </Typography>
                                             </Grid>
 
@@ -92,7 +92,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                 <TextField 
                                                 className={classes.textField}
                                                 type="text"
-                                                label={`Company-${idx+1}`}
+                                                label={`Company ${idx+1}`}
                                                 value={val.company} 
                                                 onBlur={handleChange}
                                                 inputProps={{ "data-id": idx, "data-field-type": "company" }}
@@ -105,7 +105,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                 <TextField 
                                                 className={classes.textField}
                                                     type="text"
-                                                    label={`Role-${idx+1}`}
+                                                    label={`Role ${idx+1}`}
                                                     value={val.role} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "role" }}
@@ -118,7 +118,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                 <TextField 
                                                     className={classes.textField}
                                                     type="date"
-                                                    label={`Start Date-${idx+1}`}
+                                                    label={`Start Date ${idx+1}`}
                                                     value={val.startDateExp} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "startDateExp" }}
@@ -132,7 +132,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                 <TextField 
                                                     className={classes.textField}
                                                     type="date"
-                                                    label={`End Date-${idx+1}`}
+                                                    label={`End Date ${idx+1}`}
                                                     value={val.endDateExp} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "endDateExp" }}
@@ -146,7 +146,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                 <TextField 
                                                     className={classes.textFieldMultiline}
                                                     type="text"
-                                                    label={`Details of job-${idx+1}`}
+                                                    label={`Details of job ${idx+1}`}
                                                     value={val.details} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "details" }}
