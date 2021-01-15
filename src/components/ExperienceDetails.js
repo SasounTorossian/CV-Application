@@ -93,11 +93,11 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                 className={classes.textField}
                                                 type="text"
                                                 label={`Company-${idx+1}`}
-                                                value={values.experience[idx].company} 
+                                                value={val.company} 
                                                 onBlur={handleChange}
                                                 inputProps={{ "data-id": idx, "data-field-type": "company" }}
-                                                error={!!values.experience[idx].companyError && values.experience[idx].companyError.length > 1}
-                                                helperText={values.experience[idx].companyError}
+                                                error={!!val.companyError && val.companyError.length > 1}
+                                                helperText={val.companyError}
                                                 />   
                                             </Grid>
 
@@ -106,11 +106,11 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                 className={classes.textField}
                                                     type="text"
                                                     label={`Role-${idx+1}`}
-                                                    value={values.experience[idx].role} 
+                                                    value={val.role} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "role" }}
-                                                    error={!!values.experience[idx].roleError && values.experience[idx].roleError.length > 1}
-                                                    helperText={values.experience[idx].roleError}
+                                                    error={!!val.roleError && val.roleError.length > 1}
+                                                    helperText={val.roleError}
                                                 />   
                                             </Grid>
 
@@ -119,12 +119,12 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                     className={classes.textField}
                                                     type="date"
                                                     label={`Start Date-${idx+1}`}
-                                                    value={values.experience[idx].startDateExp} 
+                                                    value={val.startDateExp} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "startDateExp" }}
                                                     InputLabelProps={{ shrink: true }}
-                                                    error={!!values.experience[idx].startDateExpError && values.experience[idx].startDateExpError.length > 1}
-                                                    helperText={values.experience[idx].startDateExpError}
+                                                    error={!!val.startDateExpError && val.startDateExpError.length > 1}
+                                                    helperText={val.startDateExpError}
                                                 />   
                                             </Grid>
 
@@ -133,12 +133,12 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                     className={classes.textField}
                                                     type="date"
                                                     label={`End Date-${idx+1}`}
-                                                    value={values.experience[idx].endDateExp} 
+                                                    value={val.endDateExp} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "endDateExp" }}
                                                     InputLabelProps={{ shrink: true }}
-                                                    error={!!values.experience[idx].endDateExpError && values.experience[idx].endDateExpError.length > 1}
-                                                    helperText={values.experience[idx].endDateExpError}
+                                                    error={!!val.endDateExpError && val.endDateExpError.length > 1}
+                                                    helperText={val.endDateExpError}
                                                 />   
                                             </Grid>
                                             
@@ -147,14 +147,14 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                                                     className={classes.textFieldMultiline}
                                                     type="text"
                                                     label={`Details of job-${idx+1}`}
-                                                    value={values.experience[idx].details} 
+                                                    value={val.details} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "details" }}
                                                     multiline
                                                     margin="none"
                                                     rows={5}
-                                                    error={!!values.experience[idx].detailsError && values.experience[idx].detailsError.length > 1}
-                                                    helperText={values.experience[idx].detailsError}
+                                                    error={!!val.detailsError && val.detailsError.length > 1}
+                                                    helperText={val.detailsError}
                                                 />   
                                             </Grid>
                                         </Grid>

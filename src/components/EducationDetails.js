@@ -89,11 +89,11 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                                                     className={classes.textField}
                                                     type="text"
                                                     label={`School-${idx+1}`}
-                                                    value={values.education[idx].school} 
+                                                    value={val.school} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "school" }}
-                                                    error={!!values.education[idx].schoolError && values.education[idx].schoolError.length > 1}
-                                                    helperText={values.education[idx].schoolError}
+                                                    error={!!val.schoolError && val.schoolError.length > 1}
+                                                    helperText={val.schoolError}
                                                 />  
                                             </Grid>
 
@@ -102,11 +102,11 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                                                     className={classes.textField}
                                                     type="text"
                                                     label={`Course-${idx+1}`}
-                                                    value={values.education[idx].course} 
+                                                    value={val.course} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "course" }}
-                                                    error={!!values.education[idx].courseError && values.education[idx].courseError.length > 1}
-                                                    helperText={values.education[idx].courseError}
+                                                    error={!!val.courseError && val.courseError.length > 1}
+                                                    helperText={val.courseError}
                                                 />   
                                             </Grid>
 
@@ -115,12 +115,12 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                                                     className={classes.textField}
                                                     type="date"
                                                     label={`Start Date-${idx+1}`}
-                                                    value={values.education[idx].startDateEdu} 
+                                                    value={val.startDateEdu} 
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "startDateEdu" }}
                                                     InputLabelProps={{ shrink: true }}
-                                                    error={!!values.education[idx].startDateEduError && values.education[idx].startDateEduError.length > 1}
-                                                    helperText={values.education[idx].startDateEduError}
+                                                    error={!!val.startDateEduError && val.startDateEduError.length > 1}
+                                                    helperText={val.startDateEduError}
                                                 />   
                                             </Grid>
 
@@ -129,12 +129,12 @@ const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
                                                     className={classes.textField}
                                                     type="date"
                                                     label={`End Date-${idx+1}`}
-                                                    value={values.education[idx].endDateEdu}
+                                                    value={val.endDateEdu}
                                                     onBlur={handleChange}
                                                     inputProps={{ "data-id": idx, "data-field-type": "endDateEdu" }}
                                                     InputLabelProps={{ shrink: true }}
-                                                    error={!!values.education[idx].endDateEduError && values.education[idx].endDateEduError.length > 1}
-                                                    helperText={values.education[idx].endDateEduError}
+                                                    error={!!val.endDateEduError && val.endDateEduError.length > 1}
+                                                    helperText={val.endDateEduError}
                                                 />   
                                             </Grid>
                                         </Grid>

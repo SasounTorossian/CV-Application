@@ -19,13 +19,21 @@ const useStyles = makeStyles((theme) => ({
     },
     fullWidth: {
         width: "100%"
+    },
+    normal: {
+        fontSize: 20
+    },
+    error: {
+        fontWeight: 600,
+        fontSize: 20,
+        color: "red"
     }
 }));
 
 const ConfirmDetails = ({values}) => {
     const classes = useStyles();
 
-    // Used to cycle through state object of parent in order to determine all necessary fields are filled.
+    // Used to  cycle through state object of parent in order to determine all necessary fields are filled.
     const invalidValues = () => {
         let invalid = false // Initates variable to be valid at first.
         let objectKeys = Object.keys(values) // Extract keys: personal, education, experience
@@ -58,7 +66,9 @@ const ConfirmDetails = ({values}) => {
         return invalid
     }
 
-    const isValid = (value) => { return value ? value : "Required" }
+    const isValidText = (value) => { return value ? value : "Required" }
+
+    const isValidStyle = (value) => { return value ? classes.normal : classes.error }
 
     return (
         <div className={classes.root}>
@@ -98,20 +108,20 @@ const ConfirmDetails = ({values}) => {
                             </Grid>
 
                             <Grid item xs={6}>
-                                <Typography variant="h6">
-                                    {`Name: ${isValid(values.personal.name)}`}
+                                <Typography variant="body1" className={isValidStyle(values.personal.name)} >
+                                    {`Name: ${isValidText(values.personal.name)}`}
                                 </Typography>
                             </Grid>
 
                             <Grid item xs={6}>
-                                <Typography variant="h6">
-                                    {`Email: ${isValid(values.personal.email)}`}
+                                <Typography variant="body1" className={isValidStyle(values.personal.email)}>
+                                    {`Email: ${isValidText(values.personal.email)}`}
                                 </Typography>
                             </Grid>
 
                             <Grid item xs={6}>
-                                <Typography variant="h6">
-                                    {`Phone: ${isValid(values.personal.phone)}`}
+                                <Typography variant="body1" className={isValidStyle(values.personal.phone)}>
+                                    {`Phone: ${isValidText(values.personal.phone)}`}
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -133,26 +143,26 @@ const ConfirmDetails = ({values}) => {
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Typography variant="h6">
-                                                {`School ${idx+1}: ${isValid(values.education[idx].school)}`}
+                                            <Typography variant="body1" className={isValidStyle(val.school)}>
+                                                {`School ${idx+1}: ${isValidText(val.school)}`}
                                             </Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Typography variant="h6">
-                                                {`Course ${idx+1}: ${isValid(values.education[idx].course)}`}
+                                            <Typography variant="body1" className={isValidStyle(val.course)}>
+                                                {`Course ${idx+1}: ${isValidText(val.course)}`}
                                             </Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Typography variant="h6">
-                                                {`Start Date ${idx+1}: ${isValid(values.education[idx].startDateEdu)}`}
+                                            <Typography variant="body1" className={isValidStyle(val.startDateEdu)}>
+                                                {`Start Date ${idx+1}: ${isValidText(val.startDateEdu)}`}
                                             </Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Typography variant="h6">
-                                                {`End Date ${idx+1}: ${isValid(values.education[idx].endDateEdu)}`}
+                                            <Typography variant="body1" className={isValidStyle(val.endDateEdu)}>
+                                                {`End Date ${idx+1}: ${isValidText(val.endDateEdu)}`}
                                             </Typography>
                                         </Grid>
                                     </Grid>
@@ -177,32 +187,32 @@ const ConfirmDetails = ({values}) => {
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Typography variant="h6">
-                                                {`Company ${idx+1}: ${isValid(values.experience[idx].company)}`}
+                                            <Typography variant="body1" className={isValidStyle(val.company)}>
+                                                {`Company ${idx+1}: ${isValidText(val.company)}`}
                                             </Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Typography variant="h6">
-                                                {`Role ${idx+1}: ${isValid(values.experience[idx].role)}`}
+                                            <Typography variant="body1" className={isValidStyle(val.role)}>
+                                                {`Role ${idx+1}: ${isValidText(val.role)}`}
                                             </Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Typography variant="h6">
-                                                {`Start Date ${idx+1}: ${isValid(values.experience[idx].startDateExp)}`}
+                                            <Typography variant="body1" className={isValidStyle(val.startDateExp)}>
+                                                {`Start Date ${idx+1}: ${isValidText(val.startDateExp)}`}
                                             </Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Typography variant="h6">
-                                                {`End Date ${idx+1}: ${isValid(values.experience[idx].endDateExp)}`}
+                                            <Typography variant="body1" className={isValidStyle(val.endDateExp)}>
+                                                {`End Date ${idx+1}: ${isValidText(val.endDateExp)}`}
                                             </Typography>
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography variant="h6">
-                                                {`Details ${idx+1}: ${isValid(values.experience[idx].details)}`}
+                                            <Typography variant="body1" className={isValidStyle(val.details)}>
+                                                {`Details ${idx+1}: ${isValidText(val.details)}`}
                                             </Typography>
                                         </Grid>
                                     </Grid>
