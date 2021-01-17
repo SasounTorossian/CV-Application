@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles, Grid, Typography, Button, Divider } from '@material-ui/core'
 import { ArrowForward, ArrowBack } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
+import { keys } from '@material-ui/core/styles/createBreakpoints';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,6 +44,9 @@ const ConfirmDetails = ({values}) => {
         let objectKeys = Object.keys(values) // Extract keys: personal, education, experience
         objectKeys.forEach(key => {
             if(Array.isArray(values[key])){ // Separates personal (not array), with education and experience (arrays)
+                if(values[key].length === 0) { // edcucation or experience array is empty, form is invalid.
+                    invalid = true
+                }
                 values[key].forEach(object => { // Extracts array of object from education or experience
                     let objectEntries = Object.entries(object) // Array of arrays containing key:value pair as first and second element. [ [2], [2], ......]
                     for(const [key, value] of objectEntries) { // Destructures key:value into separate variables
