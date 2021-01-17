@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, Grid, Typography, Button, Divider } from '@material-ui/core'
-import { ArrowForward, ArrowBack } from '@material-ui/icons'
+import { Check, ArrowBack } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 import { keys } from '@material-ui/core/styles/createBreakpoints';
 
@@ -329,9 +329,9 @@ const ConfirmDetails = ({values}) => {
                                     variant="contained" 
                                     color="primary"
                                     disabled={invalidValues()}
-                                    endIcon={<ArrowForward />}
+                                    endIcon={<Check />}
                                 >
-                                    Next Page
+                                    Finish
                                 </Button>
                             </Link>
                         </Grid>

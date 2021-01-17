@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
+import Header from "./components/Header"
 import Introduction from "./components/Introduction"
 import PersonalDetails from "./components/PersonalDetails"
 import EducationDetails from "./components/EducationDetails"
 import ExperienceDetails from "./components/ExperienceDetails"
 import ConfirmDetails from "./components/ConfirmDetails"
-import Header from "./components/Header"
+import Success from "./components/Success"
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import './App.css';
 
@@ -135,14 +136,9 @@ class App extends Component {
           />
 
           <Route
-              exact path = "/" 
-              render={(props) => (
-                <Introduction 
-                  {...props} 
-                  handleChange={this.handleChange} 
-                />
-              )} 
-            />  
+            exact path = "/" 
+            component={Introduction}
+          />  
 
 
           <Switch>
@@ -202,6 +198,12 @@ class App extends Component {
                 />
               )} 
             />
+
+          <Route
+            exact path = "/success" 
+            component={Success}
+          />  
+
           </Switch>
       </Router>
     )

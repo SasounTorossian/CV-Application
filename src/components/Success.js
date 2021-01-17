@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles, Grid, Typography, Button } from '@material-ui/core'
-import { ArrowForward } from '@material-ui/icons'
+import { Replay } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Introduction = () => {
+const Success = () => {
     const classes = useStyles();
 
     return (
@@ -38,23 +38,17 @@ const Introduction = () => {
 
                 <Grid item xs={6} className={classes.title}>
                     <Typography variant="h4">
-                        Introduction
+                        Success
                     </Typography>
                 </Grid>
                 
                 <Grid item xs={6}>
                     <Typography variant="body1" paragraph={true} className={classes.customFont}>
-                        Welcome to the CV Assistant, created by Sasoun Torossian based off the Odin project curriculum. 
-                        This assistant is made primarily made using React and Material UI, with some additional libraries
-                        included to streamline the experience.
-                    </Typography>
-                    <Typography variant="body1" paragraph={true} className={classes.customFont}>
-                        Please go through the assistant and fill out all the necessary details. 
+                        You have completed the cv assistant. We hope you had an excellent experience.
                     </Typography>
                     <Typography variant="body1" className={classes.customFont}>
-                        You can go back or forward at any time using the below arrow keys, or the menu button in the
-                        top right. Your progress will be saved when jumping between pages, and you will be able to see
-                        an overview of your progress on the final confirmation page.
+                        Please use the below button to go back to the start. You can redo the 
+                        entire assistant again if you so choose.
                     </Typography>
                 </Grid>
 
@@ -66,10 +60,10 @@ const Introduction = () => {
                         <Button 
                             variant="contained" 
                             color="primary"
-                            endIcon={<ArrowForward />}
+                            endIcon={<Replay />}
                             fullWidth={true}
                         >
-                            Next Page
+                            Go Back To Introduction
                         </Button>
                     </Link>
                 </Grid>
@@ -78,4 +72,4 @@ const Introduction = () => {
     )
 } 
 
-export default Introduction
+export default Success
