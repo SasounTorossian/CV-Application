@@ -33,7 +33,9 @@ const PersonalDetails = ({values, handleChange}) => {
                 direction="column" 
                 alignItems="center" 
                 style={{ 
-                    minHeight: '50vh' 
+                    minHeight: '50vh',
+                    margin: 0,
+                    width: '100%',
                 }}
             >
 

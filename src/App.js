@@ -6,6 +6,7 @@ import ExperienceDetails from "./components/ExperienceDetails"
 import ConfirmDetails from "./components/ConfirmDetails"
 import Header from "./components/Header"
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import './App.css';
 
 class App extends Component {
   constructor(props) {

@@ -87,6 +87,10 @@ const ConfirmDetails = ({values}) => {
                 spacing={2} 
                 direction="column" 
                 alignItems="center" 
+                style={{
+                    margin: 0,
+                    width: '100%',
+                  }}
             >
 
                 <Grid item xs={6} className={classes.title}>

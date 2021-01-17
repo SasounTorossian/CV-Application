@@ -47,7 +47,9 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                 alignItems="center" 
                 spacing={2} 
                 style={{ 
-                    minHeight: '50vh' 
+                    minHeight: '50vh',
+                    margin: 0,
+                    width: '100%',
                 }}
             >
                 <Grid item xs={6} className={classes.title}>

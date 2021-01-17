@@ -25,11 +25,14 @@ const Introduction = ({values, handleChange}) => {
     return (
         <div className={classes.root}>
             <Grid 
-                container spacing={3} 
+                container 
+                spacing={3} 
                 direction="column" 
                 alignItems="center" 
                 style={{ 
-                    minHeight: '50vh' 
+                    minHeight: '50vh',
+                    margin: 0,
+                    width: '100%' 
                 }}
             >
 
