@@ -1,93 +1,93 @@
 import React from 'react'
-import Header from "./Header"
 import Introduction from "./Introduction"
 import PersonalDetails from "./PersonalDetails"
 import EducationDetails from "./EducationDetails"
 import ExperienceDetails from "./ExperienceDetails"
 import ConfirmDetails from "./ConfirmDetails"
 import Success from "./Success"
-import {BrowserRouter as Router, Switch, Route, useLocation} from 'react-router-dom'
-import { AnimatePresence, motion } from "framer-motion"
+import {Switch, Route, useLocation} from 'react-router-dom'
+import { AnimatePresence } from "framer-motion"
 
 const Switcher = ({values, handleChange, addEducation, removeEducation, addExperience, removeExperience}) => {
+    const location = useLocation()
+
     return (
-        <Router>
-          <Route
-            path = "/" 
-            component={Header}
-          />
-
-          <Route
-            exact path = "/" 
-            component={Introduction}
-          />  
-
-
-          <Switch>
+    <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.pathname}>
             <Route
-                path = "/introduction" 
+                exact path="/"
                 render={(props) => (
-                  <Introduction 
+                <Introduction 
                     {...props} 
                     handleChange={handleChange} 
-                  />
+                />
                 )} 
             />
 
             <Route
-              path = "/personal" 
-              render={(props) => (
+                path="/introduction"
+                render={(props) => (
+                <Introduction 
+                    {...props} 
+                    handleChange={handleChange} 
+                />
+                )} 
+            />
+
+            <Route
+                path = "/personal" 
+                render={(props) => (
                 <PersonalDetails 
-                  {...props} 
-                  values={values}
-                  handleChange={handleChange} 
+                    {...props} 
+                    values={values}
+                    handleChange={handleChange} 
                 />
-              )} 
+                )} 
             />
 
             <Route
-              path = "/education" 
-              render={(props) => (
+            path = "/education" 
+            render={(props) => (
                 <EducationDetails 
-                  {...props} 
-                  values={values}
-                  handleChange = {handleChange}
-                  addEdu={addEducation}
-                  removeEdu={removeEducation}
+                    {...props} 
+                    values={values}
+                    handleChange = {handleChange}
+                    addEdu={addEducation}
+                    removeEdu={removeEducation}
                 />
-              )} 
+                )} 
             />
 
             <Route
-              path = "/experience" 
-              render={(props) => (
+            path = "/experience" 
+            render={(props) => (
                 <ExperienceDetails 
-                  {...props} 
-                  values={values}
-                  handleChange = {handleChange}
-                  addExp={addExperience}
-                  removeExp={removeExperience}
+                    {...props} 
+                    values={values}
+                    handleChange = {handleChange}
+                    addExp={addExperience}
+                    removeExp={removeExperience}
                 />
-              )} 
+                )} 
             />
 
             <Route
-              path = "/confirm" 
-              render={(props) => (
+            path = "/confirm" 
+            render={(props) => (
                 <ConfirmDetails 
-                  {...props} 
-                  values={values}
+                {...props} 
+                values={values}
                 />
-              )} 
+            )} 
             />
 
-          <Route
+        <Route
             exact path = "/success" 
             component={Success}
-          />  
+        />  
 
-          </Switch>
-      </Router>
+        </Switch>
+    </AnimatePresence>
     )
 } 
 

@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
+import Header from "./components/Header"
+import Introduction from "./components/Introduction"
 import Switcher from "./components/Switcher"
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css';
 
 class App extends Component {
@@ -118,14 +121,20 @@ class App extends Component {
 
   render() {
     return (
-      <Switcher 
-        values={this.state} 
-        handleChange = {this.handleChange}
-        addEducation = {this.addEducation}
-        removeEducation = {this.removeEducation}
-        addExperience = {this.addExperience}
-        removeExperience = {this.removeExperience}
-      />
+      
+      <Router>
+        <Header />
+
+        <Switcher 
+          values={this.state} 
+          handleChange = {this.handleChange}
+          addEducation = {this.addEducation}
+          removeEducation = {this.removeEducation}
+          addExperience = {this.addExperience}
+          removeExperience = {this.removeExperience}
+        />
+      </Router>
+      
     )
   }
 }

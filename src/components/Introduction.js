@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles, Grid, Typography, Button } from '@material-ui/core'
 import { ArrowForward } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
+import { motion } from "framer-motion"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,11 +20,28 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const pageTransition = {
+    in: {
+        opacity: 1,
+        y: 0
+    },
+    out: {
+        opacity: 0,
+        y: "-100vh"
+    }
+}
+
 const Introduction = () => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <motion.div 
+            initial="out"
+            animate="in"
+            exit="out"
+            variants={pageTransition}
+            className={classes.root}
+        >
             <Grid 
                 container 
                 spacing={3} 
@@ -74,7 +92,7 @@ const Introduction = () => {
                     </Link>
                 </Grid>
             </Grid>
-        </div>
+        </motion.div>
     )
 } 
 
