@@ -1,12 +1,5 @@
 import React, {Component} from 'react'
-import Header from "./components/Header"
-import Introduction from "./components/Introduction"
-import PersonalDetails from "./components/PersonalDetails"
-import EducationDetails from "./components/EducationDetails"
-import ExperienceDetails from "./components/ExperienceDetails"
-import ConfirmDetails from "./components/ConfirmDetails"
-import Success from "./components/Success"
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Switcher from "./components/Switcher"
 import './App.css';
 
 class App extends Component {
@@ -123,89 +116,16 @@ class App extends Component {
     this.setState({ experience: experience })       
   }
 
-  // TODO: Backdrop dimmer for confirmation page.
   render() {
-    const {personal, education, experience} = this.state
-    const values = {personal, education, experience}
-
     return (
-      <Router>
-          <Route
-            path = "/" 
-            component={Header}
-          />
-
-          <Route
-            exact path = "/" 
-            component={Introduction}
-          />  
-
-
-          <Switch>
-            <Route
-                path = "/introduction" 
-                render={(props) => (
-                  <Introduction 
-                    {...props} 
-                    handleChange={this.handleChange} 
-                  />
-                )} 
-            />
-
-            <Route
-              path = "/personal" 
-              render={(props) => (
-                <PersonalDetails 
-                  {...props} 
-                  values={values}
-                  handleChange={this.handleChange} 
-                />
-              )} 
-            />
-
-            <Route
-              path = "/education" 
-              render={(props) => (
-                <EducationDetails 
-                  {...props} 
-                  values={values}
-                  handleChange = {this.handleChange}
-                  addEdu={this.addEducation}
-                  removeEdu={this.removeEducation}
-                />
-              )} 
-            />
-
-            <Route
-              path = "/experience" 
-              render={(props) => (
-                <ExperienceDetails 
-                  {...props} 
-                  values={values}
-                  handleChange = {this.handleChange}
-                  addExp={this.addExperience}
-                  removeExp={this.removeExperience}
-                />
-              )} 
-            />
-
-            <Route
-              path = "/confirm" 
-              render={(props) => (
-                <ConfirmDetails 
-                  {...props} 
-                  values={values}
-                />
-              )} 
-            />
-
-          <Route
-            exact path = "/success" 
-            component={Success}
-          />  
-
-          </Switch>
-      </Router>
+      <Switcher 
+        values={this.state} 
+        handleChange = {this.handleChange}
+        addEducation = {this.addEducation}
+        removeEducation = {this.removeEducation}
+        addExperience = {this.addExperience}
+        removeExperience = {this.removeExperience}
+      />
     )
   }
 }
