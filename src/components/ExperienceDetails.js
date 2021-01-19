@@ -3,6 +3,7 @@ import { makeStyles, Grid, TextField, Typography, Button, IconButton, Card, Card
 import {ArrowForward, ArrowBack, Add, Delete} from '@material-ui/icons';
 import { Link } from 'react-router-dom'
 
+// Material UI styling variable to offer greater control in component styling.
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -26,14 +27,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+// ExperienceDetails component takes array of company, role, start and end dates, and details.
 const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
     const classes = useStyles();
 
+    // Overrides default button behaviour and calls addExperience in App.js
     const addExperience = (e) => { 
         e.preventDefault() 
         addExp()
     }
 
+    // Overrides default button behaviour and calls removeExperience in App.js
     const removeExperience = (e, idx) => { 
         e.preventDefault() 
         removeExp(idx)

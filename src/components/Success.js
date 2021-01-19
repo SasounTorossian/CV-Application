@@ -3,6 +3,7 @@ import { makeStyles, Grid, Typography, Button } from '@material-ui/core'
 import { Replay } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 
+// Material UI styling variable to offer greater control in component styling.
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -19,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+/* Final page to show user that their application has been successful. 
+    Gives user option to back and redo if they so choose.*/
 const Success = () => {
     const classes = useStyles();
 

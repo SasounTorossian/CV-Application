@@ -3,6 +3,7 @@ import { makeStyles, Grid, TextField, Typography, Button, IconButton, Card, Card
 import {ArrowForward, ArrowBack, Add, Delete} from '@material-ui/icons';
 import { Link } from 'react-router-dom'
 
+// Material UI styling variable to offer greater control in component styling.
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -23,14 +24,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+// EducationDetails component takes array of school, course, start and end dates.
 const EducationDetails = ({values, handleChange, addEdu, removeEdu}) => {
     const classes = useStyles();
 
+    // Overrides default button behaviour and calls addEducation in App.js
     const addEducation = (e) => { 
         e.preventDefault() 
         addEdu(e)
     }
 
+    // Overrides default button behaviour and calls removeEducation in App.js
     const removeEducation = (e, idx) => { 
         e.preventDefault() 
         removeEdu(idx)

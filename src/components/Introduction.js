@@ -4,6 +4,7 @@ import { ArrowForward } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 import { motion } from "framer-motion"
 
+// Material UI styling variable to offer greater control in component styling.
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -20,17 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const pageTransition = {
-    in: {
-        opacity: 1,
-        y: 0
-    },
-    out: {
-        opacity: 0,
-        y: "-100vh"
-    }
-}
-
+// Introduction component that introduces user to app.
 const Introduction = () => {
     const classes = useStyles();
 

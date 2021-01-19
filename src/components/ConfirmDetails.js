@@ -3,6 +3,7 @@ import { makeStyles, Grid, Typography, Button, Divider } from '@material-ui/core
 import { Check, ArrowBack } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 
+// Material UI styling variable to offer greater control in component styling.
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -34,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+/* ConfirmDetails shows overview of previously inputted values, and 
+    allows use to progress if all values are filled in. */
 const ConfirmDetails = ({values}) => {
     const classes = useStyles();
 
@@ -73,10 +76,13 @@ const ConfirmDetails = ({values}) => {
         return invalid
     }
 
+    // Checks if valid value, and returns approriate message.
     const isValidText = (value) => { return value ? value : "Required" }
 
+    // Checks if valid value, and returns appropriate syle.
     const isValidStyle = (value) => { return value ? classes.normal : classes.error }
 
+    // Checks if valid value, and returns appropriate display.
     const isValidDisplay = (value) => { return value ? "initial" : "inline" }
 
     return (

@@ -11,6 +11,7 @@ import { makeStyles,
       } from '@material-ui/core'
 import {Menu as MenuIcon, Info, Person, School, Work, Pageview, GitHub} from '@material-ui/icons'
 
+// Material UI styling variable to offer greater control in component styling.
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -36,19 +37,26 @@ const useStyles = makeStyles((theme) => ({
 
   }));
 
+/* Header component which lies across the top of the screen. 
+    Serves as title banner, as well as containing my Git
+    link and nav menu buttons. */
 const Header = ({history}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const classes = useStyles();
 
+    // Handler for menu pop up
     const handleMenu = (event) => {
       setAnchorEl(event.currentTarget);
     };
   
+    // Handler for clicking on menu
     const handleMenuClick = (pageURL) => {
       if(pageURL !== null) history.push(pageURL)
       setAnchorEl(null);
     };
 
+    /* Renders the Appbar which creates a horizontal bar, as well as the toolbar 
+        which contains all the project title, github link, and menu dropdown. */
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -78,6 +86,7 @@ const Header = ({history}) => {
                         <MenuIcon className={classes.menuIcon}/>
                     </IconButton>
 
+                    {/* Menu component which contains all the pages. Includes icons. */}
                     <Menu
                         id="simple-menu"
                         anchorEl={anchorEl}

@@ -3,6 +3,7 @@ import { makeStyles, Grid, TextField, Typography, Button } from '@material-ui/co
 import { ArrowForward, ArrowBack } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 
+// Material UI styling variable to offer greater control in component styling.
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-// TODO: Get rid of <br>
+// PersonalDetails component takes name, email, and phone.
 const PersonalDetails = ({values, handleChange}) => {
     const classes = useStyles();
 
