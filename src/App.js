@@ -121,7 +121,6 @@ class App extends Component {
 
   render() {
     return (
-      
       <Router>
         <Header />
 
@@ -134,7 +133,6 @@ class App extends Component {
           removeExperience = {this.removeExperience}
         />
       </Router>
-      
     )
   }
 }

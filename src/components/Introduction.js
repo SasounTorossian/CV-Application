@@ -35,13 +35,7 @@ const Introduction = () => {
     const classes = useStyles();
 
     return (
-        <motion.div 
-            initial="out"
-            animate="in"
-            exit="out"
-            variants={pageTransition}
-            className={classes.root}
-        >
+        <div className={classes.root}>
             <Grid 
                 container 
                 spacing={3} 
@@ -92,7 +86,7 @@ const Introduction = () => {
                     </Link>
                 </Grid>
             </Grid>
-        </motion.div>
+        </div>
     )
 } 
 

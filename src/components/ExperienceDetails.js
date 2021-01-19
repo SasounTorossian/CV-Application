@@ -2,7 +2,6 @@ import React from 'react'
 import { makeStyles, Grid, TextField, Typography, Button, IconButton, Card, CardContent } from '@material-ui/core'
 import {ArrowForward, ArrowBack, Add, Delete} from '@material-ui/icons';
 import { Link } from 'react-router-dom'
-import { motion } from "framer-motion"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,17 +26,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const pageTransition = {
-    in: {
-        opacity: 1,
-        y: 0
-    },
-    out: {
-        opacity: 0,
-        y: "-100vh"
-    }
-}
-
 const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
     const classes = useStyles();
 
@@ -52,13 +40,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
     }
 
     return (
-        <motion.div 
-            initial="out"
-            animate="in"
-            exit="out"
-            variants={pageTransition}
-            className={classes.root}
-        >
+        <div className={classes.root}>
             <Grid 
                 container 
                 direction="column" 
@@ -239,7 +221,7 @@ const ExperienceDetails = ({values, handleChange, addExp, removeExp}) => {
                     </Grid>
                 </Grid>
             </Grid>
-        </motion.div>
+        </div>
     )
 } 
 

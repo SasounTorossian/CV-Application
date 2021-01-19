@@ -2,7 +2,6 @@ import React from 'react'
 import { makeStyles, Grid, Typography, Button } from '@material-ui/core'
 import { Replay } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
-import { motion } from "framer-motion"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,28 +19,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const pageTransition = {
-    in: {
-        opacity: 1,
-        y: 0
-    },
-    out: {
-        opacity: 0,
-        y: "-100vh"
-    }
-}
-
 const Success = () => {
     const classes = useStyles();
 
     return (
-        <motion.div 
-            initial="out"
-            animate="in"
-            exit="out"
-            variants={pageTransition}
-            className={classes.root}
-        >
+        <div className={classes.root}>
             <Grid 
                 container 
                 spacing={3} 
@@ -86,7 +68,7 @@ const Success = () => {
                     </Link>
                 </Grid>
             </Grid>
-        </motion.div>
+        </div>
     )
 } 
 
