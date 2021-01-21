@@ -57,7 +57,7 @@ const Success = () => {
 
                 <Grid item xs={6} className={classes.centering}>
                     <Link 
-                        to="/personal"
+                        to="/CV-Application"
                         style={{textDecoration: 'none'}}
                     >
                         <Button 
