@@ -50,12 +50,17 @@ const PersonalDetails = ({values, handleChange}) => {
                     <form autoComplete="off" onChange={handleChange}>
                         <TextField 
                             className={classes.fullWidth}
-                            color="primary"
                             type="text"
                             label="Name" 
                             value={values.personal.name} 
                             onBlur={handleChange}
-                            inputProps={{ "data-field-type": "name" }}
+                            inputProps={{ 
+                                "data-field-type": "name", 
+                                autocomplete: 'new-password',
+                                form: {
+                                    autocomplete: 'off',
+                                } 
+                            }}
                             error={!!values.personal.nameError && values.personal.nameError.length > 1}
                             helperText={values.personal.nameError}
                         />
@@ -66,7 +71,13 @@ const PersonalDetails = ({values, handleChange}) => {
                             label="Email" 
                             value={values.personal.email} 
                             onBlur={handleChange}
-                            inputProps={{ "data-field-type": "email" }}
+                            inputProps={{ 
+                                "data-field-type": "email",
+                                autocomplete: 'new-password',
+                                form: {
+                                    autocomplete: 'off',
+                                }  
+                            }}
                             error={!!values.personal.emailError && values.personal.emailError.length > 1}
                             helperText={values.personal.emailError}
                         />
@@ -75,10 +86,15 @@ const PersonalDetails = ({values, handleChange}) => {
                             className={classes.fullWidth}
                             type="text"
                             label="Phone" 
-                            name="phone"
                             value={values.personal.phone} 
                             onBlur={handleChange}
-                            inputProps={{ "data-field-type": "phone" }}
+                            inputProps={{ 
+                                "data-field-type": "phone", 
+                                autocomplete: 'new-password',
+                                form: {
+                                    autocomplete: 'off',
+                                }  
+                            }}
                             error={!!values.personal.phoneError && values.personal.phoneError.length > 1}
                             helperText={values.personal.phoneError}
                         />
