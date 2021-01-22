@@ -1,5 +1,5 @@
 # CV-Application
-Cv application page based off the Odin project curriculum. Page allow user to progress through application form, filling in their details.
+Cv application page based off the Odin project curriculum. Page allow user to progress through application form, filling in their details. Live demo can be found on github.io [here](https://sasountorossian.github.io/CV-Application/). 
 
 ![CV demo](CV.gif)
 
