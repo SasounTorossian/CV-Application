@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Header from "./components/Header"
 import Switcher from "./components/Switcher"
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {HashRouter as Router, Route} from 'react-router-dom'
 import './App.css';
 
 // App component controls the high-level state, as well as the logic of adding/removing/updating detials.

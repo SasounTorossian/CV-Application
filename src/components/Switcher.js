@@ -20,7 +20,7 @@ const Switcher = ({values, handleChange, addEducation, removeEducation, addExper
     return (
         <SlideRoutes location={location}>
             <Route
-                path="/CV-Application"
+                exact path="/"
                 render={(props) => (
                 <Introduction 
                     {...props} 

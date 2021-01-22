@@ -96,7 +96,7 @@ const Header = ({history}) => {
                     >
 
                         <MenuItem 
-                          onClick={() => handleMenuClick("/CV-Application")}
+                          onClick={() => handleMenuClick("/")}
                         >
                           <ListItemIcon>
                             <Info />

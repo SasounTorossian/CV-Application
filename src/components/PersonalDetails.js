@@ -111,7 +111,7 @@ const PersonalDetails = ({values, handleChange}) => {
                     >
                         <Grid item xs={6}>
                             <Link 
-                                to="/CV-Application"
+                                to="/"
                                 style={{textDecoration: 'none'}}
                             >
                                 <Button
