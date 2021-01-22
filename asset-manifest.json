@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/CV-Application/static/css/main.69170e95.chunk.css",
-    "main.js": "/CV-Application/static/js/main.155c06ce.chunk.js",
-    "main.js.map": "/CV-Application/static/js/main.155c06ce.chunk.js.map",
+    "main.js": "/CV-Application/static/js/main.e2b23881.chunk.js",
+    "main.js.map": "/CV-Application/static/js/main.e2b23881.chunk.js.map",
     "runtime-main.js": "/CV-Application/static/js/runtime-main.cd535416.js",
     "runtime-main.js.map": "/CV-Application/static/js/runtime-main.cd535416.js.map",
     "static/js/2.c9818a90.chunk.js": "/CV-Application/static/js/2.c9818a90.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.cd535416.js",
     "static/js/2.c9818a90.chunk.js",
     "static/css/main.69170e95.chunk.css",
-    "static/js/main.155c06ce.chunk.js"
+    "static/js/main.e2b23881.chunk.js"
   ]
 }
