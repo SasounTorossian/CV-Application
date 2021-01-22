@@ -48,7 +48,7 @@ const Introduction = () => {
                 <Grid item xs={6}>
                     <Typography variant="body1" paragraph={true} className={classes.customFont}>
                         Welcome to the CV Assistant, created by Sasoun Torossian based off the Odin project curriculum. 
-                        This assistant is made primarily made using React and Material UI, with some additional libraries
+                        This assistant is made using React and Material UI, with some additional libraries
                         included to streamline the experience.
                     </Typography>
                     <Typography variant="body1" paragraph={true} className={classes.customFont}>
